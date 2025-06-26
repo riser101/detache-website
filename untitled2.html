@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detache - Navigate Breakups with AI-Powered Healing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(
+                to bottom,
+                #000000 0%,
+                #0A0A0A 12%,
+                #1A1A1A 20%,
+                #2D2D00 30%,
+                #4A4A00 40%,
+                #666600 47%,
+                #D4911A 53%,
+                #E6A91F 57%,
+                #F5B532 61%,
+                #FF9800 67%,
+                #FF8F00 73%,
+                #FF6F00 80%,
+                #E65100 87%,
+                #BF360C 92%,
+                #8D2F00 96%,
+                #000000 100%
+            );
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 80px 20px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 40px;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #FF9800;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #FF9800;
+        }
+
+        .nav-download-btn {
+            background: transparent !important;
+            border: 2px solid #FF9800 !important;
+            color: white !important;
+            padding: 10px 24px !important;
+            border-radius: 8px !important;
+            font-weight: 600 !important;
+            font-size: 16px !important;
+            letter-spacing: 1.5px !important;
+            text-transform: uppercase !important;
+            transition: all 0.3s !important;
+        }
+
+        .nav-download-btn:hover {
+            background: transparent !important;
+            color: white !important;
+            border-color: #FF9800 !important;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-tagline {
+            color: #FF9800;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: 56px;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 30px;
+            line-height: 1.1;
+            text-align: center;
+        }
+
+        .rotating-text-container {
+            display: block;
+            position: relative;
+            min-height: 80px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .rotating-text {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            opacity: 0;
+            transition: all 0.6s ease-in-out;
+            color: #FF9800;
+            font-weight: 900;
+            white-space: nowrap;
+        }
+
+        .rotating-text.active {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .rotating-text.exiting {
+            opacity: 0;
+            transform: translateX(-50%) translateY(-20px);
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #FF9800, #FF6F00);
+            color: white;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 152, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 16px 32px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Features Section */
+        .features {
+            background: #000;
+            padding: 120px 20px;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-tagline {
+            color: #FF9800;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(255, 152, 0, 0.1), rgba(255, 111, 0, 0.05));
+            border: 1px solid rgba(255, 152, 0, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(255, 152, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #FF9800, #FF6F00);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 24px;
+        }
+
+        .feature-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .feature-description {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+            padding: 120px 20px;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 60px;
+            margin-top: 60px;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #FF9800, #FF6F00);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 800;
+            color: white;
+            margin: 0 auto 24px;
+        }
+
+        .step-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .step-description {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: #000;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .stat {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 900;
+            color: #FF9800;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        /* CTA Section */
+        .final-cta {
+            background: linear-gradient(
+                135deg,
+                #FF9800 0%,
+                #FF6F00 50%,
+                #E65100 100%
+            );
+            padding: 120px 20px;
+            text-align: center;
+        }
+
+        .final-cta-title {
+            font-size: 48px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .final-cta-subtitle {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .app-store-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .app-store-btn {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .app-store-btn:hover {
+            transform: translateY(-2px);
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        /* Footer */
+        .footer {
+            background: #000;
+            padding: 60px 20px 40px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #FF9800;
+            margin-bottom: 20px;
+        }
+
+        .footer-text {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #FF9800;
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 48px;
+            }
+            
+            .hero-subtitle {
+                font-size: 20px;
+            }
+            
+            .section-title {
+                font-size: 36px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+    <script>
+        // Text rotation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const rotatingTexts = document.querySelectorAll('.rotating-text');
+            let currentIndex = 0;
+            
+            function rotateText() {
+                // Remove active class from current text
+                rotatingTexts[currentIndex].classList.remove('active');
+                rotatingTexts[currentIndex].classList.add('exiting');
+                
+                // Move to next text
+                currentIndex = (currentIndex + 1) % rotatingTexts.length;
+                
+                setTimeout(() => {
+                    // Remove exiting class from previous text
+                    rotatingTexts.forEach(text => text.classList.remove('exiting'));
+                    
+                    // Add active class to new text
+                    rotatingTexts[currentIndex].classList.add('active');
+                }, 300);
+            }
+            
+            // Start rotation
+            setInterval(rotateText, 3000); // Change every 3 seconds
+        });
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="#" class="logo">detache</a>
+            <ul class="nav-links">
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#download" class="nav-download-btn">Download</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-tagline">SELF-WORK FOR HIGH AGENCY PEOPLE</div>
+            <h1 class="hero-title">
+                empower yourself in a separation with: 
+                <div class="rotating-text-container">
+                    <span class="rotating-text">One-click Photo Removal Tool</span>
+                    <span class="rotating-text active">Always-on AI Therapist</span>
+                    <span class="rotating-text">Therapy Session Deep Dives</span>
+                    <span class="rotating-text">Power of Narrative Therapy</span>
+                    <span class="rotating-text">Accountability Features</span>
+                </div>
+            </h1>
+            <p class="hero-subtitle">Transform your heartbreak into growth with intelligent photo removal, AI therapy, and expert insights.</p>
+            <div class="cta-buttons">
+                <a href="#download" class="btn-primary">Download Free</a>
+                <a href="#features" class="btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tagline">POWERFUL HEALING TOOLS</div>
+                <h2 class="section-title">Everything you need to heal and move forward</h2>
+                <p class="section-subtitle">Four evidence-based features designed by therapists and technologists to support your emotional recovery journey.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3 class="feature-title">One-click Photo Removal Tool</h3>
+                    <p class="feature-description">Instantly remove all photos of your ex-partner from your phone with our AI-powered recognition technology. Clean your digital space in seconds, not hours.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3 class="feature-title">Always-on AI Therapist</h3>
+                    <p class="feature-description">24/7 access to a compassionate AI therapist trained in breakup recovery techniques. Process emotions, gain insights, and develop healthy coping strategies.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">Therapy Session Deep Dives</h3>
+                    <p class="feature-description">Review and analyze your therapy conversations to understand emotional patterns, track progress, and identify breakthrough moments in your healing journey.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎧</div>
+                    <h3 class="feature-title">Narrative Therapy</h3>
+                    <p class="feature-description">Listen to two AI relationship experts discuss your therapy sessions, highlighting insights and providing personalized recommendations in podcast format.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎧</div>
+                    <h3 class="feature-title">Accountability Features</h3>
+                    <p class="feature-description">Intelligent push notifications to keep you on-track on the healing 
+                    journey.</p>
+                </div>                
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tagline">SIMPLE. EFFECTIVE. PRIVATE.</div>
+                <h2 class="section-title">Your healing journey in 4 steps</h2>
+                <p class="section-subtitle">Start your recovery today with our scientifically-backed approach to breakup healing.</p>
+            </div>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Clean Your Digital Space</h3>
+                    <p class="step-description">Use our one-click photo removal tool to clear triggering images and create a fresh digital environment for healing.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Talk to AI Therapist</h3>
+                    <p class="step-description">Share your feelings and experiences with our AI therapist. Process emotions in a safe, judgment-free space whenever you need support.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Analyze Your Patterns</h3>
+                    <p class="step-description">Review your therapy sessions with our deep dive feature to understand your emotional patterns and track your healing progress.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Get Expert Insights</h3>
+                    <p class="step-description">Listen to relationship experts analyze your sessions and provide personalized guidance in easy-to-digest audio format.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat">
+                    <div class="stat-number">94%</div>
+                    <div class="stat-label">Feel better within 7 days</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">50K+</div>
+                    <div class="stat-label">Photos safely removed</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">10K+</div>
+                    <div class="stat-label">People healing daily</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">4.9★</div>
+                    <div class="stat-label">App Store rating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta" id="download">
+        <div class="container">
+            <h2 class="final-cta-title">Ready to start healing?</h2>
+            <p class="final-cta-subtitle">Join thousands who've transformed their heartbreak into growth. Download Detache and begin your journey to emotional freedom today.</p>
+            <div class="app-store-buttons">
+                <a href="#" class="app-store-btn">
+                    <span>📱</span>
+                    Download for iOS
+                </a>
+                <a href="#" class="app-store-btn">
+                    <span>🔒</span>
+                    Privacy Protected
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">detache</div>
+            <p class="footer-text">Empowering people to heal from heartbreak with compassionate technology and expert guidance.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Support</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="copyright">
+                © 2024 Detache. All rights reserved. • Made with ❤️ for healing hearts
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
