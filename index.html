@@ -593,10 +593,51 @@
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
+                gap: 15px;
+                width: 100%;
+                padding: 0 20px;
+                box-sizing: border-box;
+            }
+            
+            .cta-buttons > .app-store-section,
+            .cta-buttons > .btn-secondary {
+                width: 100%;
+                max-width: 280px;
+            }
+            
+            .nav-content {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 15px;
             }
             
             .nav-links {
-                display: none;
+                display: flex;
+                gap: 8px;
+                align-items: center;
+            }
+            
+            .nav-links li a {
+                font-size: 10px;
+                padding: 4px 4px;
+                white-space: nowrap;
+            }
+            
+            .nav-download-btn {
+                padding: 2px 4px;
+                font-size: 7px;
+                border-radius: 3px;
+                border-width: 1px;
+                white-space: nowrap;
+            }
+            
+            .nav {
+                padding: 12px 0;
+            }
+            
+            .logo {
+                font-size: 16px;
             }
             
             .nav {
@@ -689,6 +730,106 @@
                 font-size: 20px;
             }
         }
+
+        /* Coming Soon App Store Button Styles */
+        .app-store-section {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .coming-soon-text {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #666666;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+
+        .app-store-btn-inactive {
+            display: inline-block;
+            opacity: 0.5;
+            filter: grayscale(60%);
+            cursor: not-allowed;
+            transition: opacity 0.3s ease;
+            position: relative;
+        }
+
+        .app-store-btn-inactive:hover {
+            opacity: 0.6;
+        }
+
+        .app-store-btn-inactive img {
+            height: 65px;
+            width: auto;
+        }
+        
+        /* Make both buttons same width - will be set by JavaScript */
+        .cta-buttons {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .cta-buttons > .app-store-section {
+            display: inline-block;
+        }
+        
+        .cta-buttons > .btn-secondary {
+            box-sizing: border-box;
+            text-align: center;
+            height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .coming-soon-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 10px;
+            font-weight: 600;
+            color: #ff4444;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2px 6px;
+            border-radius: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+
+        /* App download container alignment */
+        .app-download-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .app-icon {
+            height: 65px;
+            width: 65px;
+            border-radius: 16px;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 600px) {
+            .app-download-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
     </style>
     <script>
         // Text rotation functionality
@@ -716,6 +857,17 @@
             // Start rotation
             setInterval(rotateText, 3000); // Change every 3 seconds
         });
+        
+        // Match button widths
+        window.addEventListener('load', function() {
+            const appStoreButton = document.querySelector('.app-store-btn-inactive');
+            const learnMoreButton = document.querySelector('.btn-secondary');
+            
+            if (appStoreButton && learnMoreButton) {
+                const appStoreWidth = appStoreButton.offsetWidth;
+                learnMoreButton.style.width = appStoreWidth + 'px';
+            }
+        });
     </script>
 </head>
 <body>
@@ -726,8 +878,7 @@
             <ul class="nav-links">
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="#features">Features</a></li>
-                <li><a href="#how-it-works">How It Works</a></li>
-                <li><a href="#download" class="nav-download-btn">Download</a></li>
+                <li><a href="#download" class="nav-download-btn">Join Waitlist</a></li>
             </ul>
         </div>
     </nav>
@@ -740,18 +891,22 @@
                 <span class="hero-main-text">empower yourself in a separation with:</span>
                 <div class="rotating-text-container">
                     <span class="rotating-text">One-click Photo Removal Tool</span>
-                    <span class="rotating-text active">Always-on AI Therapist</span>
-                    <span class="rotating-text">Therapy Session Deep Dives</span>
-                    <span class="rotating-text">Power of Narrative Therapy</span>
-                    <span class="rotating-text">Accountability Features</span>
+                    <span class="rotating-text active">AI Therapist</span>
+                    <span class="rotating-text">Therapy Deep Dives</span>
+                    <span class="rotating-text">Narrative Therapy</span>
+                    <span class="rotating-text">Accountability</span>
                 </div>
             </h1>
             <p class="hero-subtitle">Transform your heartbreak into growth with intelligent photo removal, AI therapy, and expert insights.</p>
             <div class="cta-buttons">
-                <a href="#" class="app-store-btn">
-                    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" style="height: 65px; width: auto;">
-                </a>
-                <a href="#features" class="btn-secondary" style="height: 65px; width:auto; display: flex; align-items: center; justify-content: center;">Learn More</a>
+                <div class="app-store-section">
+                    <div class="app-store-btn-inactive">
+                        <span class="coming-soon-badge">Coming Soon</span>
+                        <img src="Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" 
+                             alt="Download on the App Store - Coming Soon">
+                    </div>
+                </div>
+                <a href="#features" class="btn-secondary">Learn More</a>
             </div>
         </div>
     </section>
@@ -774,13 +929,13 @@
                 
                 <div class="feature-card">
                     <div class="feature-icon">🤖</div>
-                    <h3 class="feature-title">Always-on AI Therapist</h3>
+                    <h3 class="feature-title">AI Therapist</h3>
                     <p class="feature-description">24/7 access to a compassionate AI therapist trained in breakup recovery techniques. Process emotions, gain insights, and develop healthy coping strategies.</p>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">📊</div>
-                    <h3 class="feature-title">Therapy Session Deep Dives</h3>
+                    <h3 class="feature-title">Therapy Deep Dives</h3>
                     <p class="feature-description">Review and analyze your therapy conversations to understand emotional patterns, track progress, and identify breakthrough moments in your healing journey.</p>
                 </div>
                 
@@ -791,7 +946,7 @@
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🎧</div>
-                    <h3 class="feature-title">Accountability Features</h3>
+                    <h3 class="feature-title">Accountability</h3>
                     <p class="feature-description">Intelligent push notifications to keep you on-track on the healing 
                     journey.</p>
                 </div>                
@@ -805,11 +960,17 @@
             <h2 class="final-cta-title">Ready to start healing?</h2>
             <p class="final-cta-subtitle">Join thousands who've transformed their heartbreak into growth. Download Detache and begin your journey to emotional freedom today.</p>
             <div class="app-store-buttons">
-                <div style="display: flex; align-items: center; gap: 20px;">
-                    <img src="instagram-icon.jpg" alt="Detache App Icon" style="height: 65px; width: 65px; border-radius: 16px;">
-                    <a href="#" class="app-store-btn">
-                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" style="height: 65px; width: auto;">
-                    </a>
+                <div class="app-download-container">
+                    <!-- <img src="instagram-icon.jpg" alt="Detache App Icon" class="app-icon"> -->
+                    <div class="app-store-section">
+                        <div class="app-store-btn-inactive">
+                            <span class="coming-soon-badge">Coming Soon</span>
+                            <img src="Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" 
+                                 alt="Download on the App Store - Coming Soon">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
