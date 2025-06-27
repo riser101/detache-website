@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detache - Frequently Asked Questions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: white;
+            background: #000;
+            min-height: 100vh;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #FF9800, #FF6F00);
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 40px;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 152, 0, 0.2);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #FF9800;
+            text-decoration: none;
+        }
+
+        .back-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #FF9800;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 120px 20px 60px;
+        }
+
+        .page-title {
+            font-size: 48px;
+            font-weight: 800;
+            color: #FF9800;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .page-subtitle {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .coming-soon {
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .coming-soon-icon {
+            font-size: 80px;
+            margin-bottom: 30px;
+        }
+
+        .coming-soon-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .coming-soon-text {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 500px;
+            margin: 0 auto 40px;
+        }
+
+        .notify-btn {
+            background: linear-gradient(135deg, #FF9800, #FF6F00);
+            color: white;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.3s;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .notify-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                padding: 15px 20px;
+            }
+
+            .page-title {
+                font-size: 36px;
+            }
+
+            .container {
+                padding: 100px 15px 40px;
+            }
+
+            .coming-soon-icon {
+                font-size: 60px;
+            }
+
+            .coming-soon-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+    <script>
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.offsetHeight;
+            const winHeight = window.innerHeight;
+            const scrollPercent = scrollTop / (docHeight - winHeight);
+            const scrollPercentRounded = Math.round(scrollPercent * 100);
+            
+            document.querySelector('.progress-bar').style.width = scrollPercentRounded + '%';
+        });
+    </script>
+</head>
+<body>
+    <div class="progress-bar"></div>
+    
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="index.html" class="logo">detache</a>
+            <a href="index.html" class="back-link">← Back to Home</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="page-title">Frequently Asked Questions</h1>
+        <p class="page-subtitle">Get answers to common questions about healing with Detache</p>
+        
+        <div class="coming-soon">
+            <div class="coming-soon-icon">❓</div>
+            <h2 class="coming-soon-title">FAQs Coming Soon</h2>
+            <p class="coming-soon-text">We're working on compiling the most helpful answers to support your healing journey. Check back soon for comprehensive FAQs about using Detache.</p>
+            <a href="contact.html" class="notify-btn">Contact Us for Questions</a>
+        </div>
+    </div>
+</body>
+</html>

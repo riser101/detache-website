@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detache - Privacy Policy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: white;
+            background: #000;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #FF9800, #FF6F00);
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 40px;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 152, 0, 0.2);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #FF9800;
+            text-decoration: none;
+        }
+
+        .back-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #FF9800;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 120px 20px 60px;
+        }
+
+        .page-title {
+            font-size: 48px;
+            font-weight: 800;
+            color: #FF9800;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .content {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .content h2 {
+            color: white;
+            font-size: 24px;
+            margin: 40px 0 20px;
+            font-weight: 600;
+        }
+
+        .content h3 {
+            color: white;
+            font-size: 20px;
+            margin: 30px 0 15px;
+            font-weight: 600;
+        }
+
+        .content p {
+            margin-bottom: 20px;
+        }
+
+        .content ul {
+            margin: 20px 0;
+            padding-left: 30px;
+        }
+
+        .content li {
+            margin-bottom: 10px;
+        }
+
+        .effective-date {
+            color: #FF9800;
+            font-weight: 600;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                padding: 15px 20px;
+            }
+
+            .page-title {
+                font-size: 36px;
+            }
+
+            .container {
+                padding: 100px 15px 40px;
+            }
+        }
+    </style>
+    <script>
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.offsetHeight;
+            const winHeight = window.innerHeight;
+            const scrollPercent = scrollTop / (docHeight - winHeight);
+            const scrollPercentRounded = Math.round(scrollPercent * 100);
+            
+            document.querySelector('.progress-bar').style.width = scrollPercentRounded + '%';
+        });
+    </script>
+</head>
+<body>
+    <div class="progress-bar"></div>
+    
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="index.html" class="logo">detache</a>
+            <a href="index.html" class="back-link">← Back to Home</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="page-title">Privacy Policy</h1>
+        <div class="effective-date">Effective Date: June 27, 2025</div>
+        
+        <div class="content">
+            <p>At Detache, we understand that privacy is fundamental, especially when dealing with sensitive personal information during emotional recovery. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application and related services.</p>
+
+            <h2>Information We Collect</h2>
+            
+            <h3>Personal Information</h3>
+            <ul>
+                <li>Account information (email address, username)</li>
+                <li>Profile information you choose to provide</li>
+                <li>Communication preferences</li>
+            </ul>
+
+            <h3>Therapy and Recovery Data</h3>
+            <ul>
+                <li>Conversations with our AI therapist</li>
+                <li>Session notes and insights</li>
+                <li>Progress tracking information</li>
+                <li>Emotional state data you choose to share</li>
+            </ul>
+
+            <h3>Photo and Media Information</h3>
+            <ul>
+                <li>Photos you choose to scan for removal (processed locally on your device)</li>
+                <li>Metadata associated with removed photos</li>
+                <li>Usage patterns of photo removal features</li>
+            </ul>
+
+            <h3>Technical Information</h3>
+            <ul>
+                <li>Device information (device type, operating system, app version)</li>
+                <li>Usage analytics (features used, session duration)</li>
+                <li>Crash reports and performance data</li>
+                <li>IP address and general location information</li>
+            </ul>
+
+            <h2>How We Use Your Information</h2>
+
+            <h3>To Provide Our Services</h3>
+            <ul>
+                <li>Deliver personalized AI therapy sessions</li>
+                <li>Generate narrative therapy insights and recommendations</li>
+                <li>Track your healing progress and patterns</li>
+                <li>Provide photo removal functionality</li>
+            </ul>
+
+            <h3>To Improve Our Services</h3>
+            <ul>
+                <li>Analyze usage patterns to enhance features</li>
+                <li>Develop new therapeutic tools and interventions</li>
+                <li>Improve AI therapy responses and accuracy</li>
+                <li>Optimize app performance and user experience</li>
+            </ul>
+
+            <h3>To Communicate With You</h3>
+            <ul>
+                <li>Send helpful reminders and notifications</li>
+                <li>Provide customer support</li>
+                <li>Share important updates about our services</li>
+                <li>Deliver accountability features you've enabled</li>
+            </ul>
+
+            <h2>Photo Processing and Privacy</h2>
+            <p>Your photo privacy is paramount to us. Our photo removal feature works as follows:</p>
+            <ul>
+                <li><strong>Local Processing:</strong> Photo recognition and removal processing happens locally on your device</li>
+                <li><strong>No Photo Storage:</strong> We never store, transmit, or have access to your actual photos</li>
+                <li><strong>Metadata Only:</strong> We may collect anonymous metadata about photo removal usage for feature improvement</li>
+                <li><strong>Your Control:</strong> You maintain complete control over which photos are processed and removed</li>
+            </ul>
+
+            <h2>AI Therapy and Data Security</h2>
+            <p>Your therapy conversations are treated with the highest level of confidentiality:</p>
+            <ul>
+                <li><strong>Encryption:</strong> All therapy data is encrypted both in transit and at rest</li>
+                <li><strong>Anonymization:</strong> Personal identifiers are separated from therapy content</li>
+                <li><strong>Limited Access:</strong> Only authorized personnel can access aggregated, anonymized data for service improvement</li>
+                <li><strong>No Human Review:</strong> Your individual therapy sessions are never reviewed by human staff without your explicit consent</li>
+            </ul>
+
+            <h2>Information Sharing and Disclosure</h2>
+            <p>We do not sell, trade, or otherwise transfer your personal information to third parties except in the following circumstances:</p>
+
+            <h3>Service Providers</h3>
+            <p>We may share information with trusted third-party service providers who assist us in operating our app, conducting our business, or serving our users, provided they agree to keep this information confidential.</p>
+
+            <h3>Legal Requirements</h3>
+            <p>We may disclose your information when we believe in good faith that disclosure is necessary to:</p>
+            <ul>
+                <li>Comply with applicable law or legal process</li>
+                <li>Protect the rights, property, or safety of Detache, our users, or others</li>
+                <li>Enforce our terms of service</li>
+                <li>Prevent fraud or security threats</li>
+            </ul>
+
+            <h3>Emergency Situations</h3>
+            <p>If we determine that there is an imminent risk of serious harm to you or others, we may share relevant information with emergency services or mental health professionals.</p>
+
+            <h2>Data Retention</h2>
+            <p>We retain your information only as long as necessary to provide our services and fulfill the purposes outlined in this policy:</p>
+            <ul>
+                <li><strong>Account Information:</strong> Retained until you delete your account</li>
+                <li><strong>Therapy Data:</strong> Retained for up to 7 years to support long-term progress tracking</li>
+                <li><strong>Technical Data:</strong> Typically retained for 2 years for service improvement</li>
+                <li><strong>Anonymous Analytics:</strong> May be retained indefinitely in aggregated form</li>
+            </ul>
+
+            <h2>Your Rights and Choices</h2>
+
+            <h3>Access and Control</h3>
+            <ul>
+                <li>View and download your therapy data</li>
+                <li>Update your profile and preferences</li>
+                <li>Control notification and communication settings</li>
+                <li>Request deletion of your account and associated data</li>
+            </ul>
+
+            <h3>Data Portability</h3>
+            <p>You can export your therapy insights and progress data in a portable format at any time through the app settings.</p>
+
+            <h3>Opt-Out Options</h3>
+            <ul>
+                <li>Disable analytics collection</li>
+                <li>Turn off personalized recommendations</li>
+                <li>Limit data sharing for service improvement</li>
+                <li>Opt out of marketing communications</li>
+            </ul>
+
+            <h2>Children's Privacy</h2>
+            <p>Detache is not intended for use by individuals under the age of 18. We do not knowingly collect personal information from children under 18. If we become aware that we have collected personal information from a child under 18, we will take steps to delete that information promptly.</p>
+
+            <h2>International Data Transfers</h2>
+            <p>Your information may be transferred to and processed in countries other than your country of residence. We ensure that such transfers comply with applicable data protection laws and implement appropriate safeguards to protect your information.</p>
+
+            <h2>Security Measures</h2>
+            <p>We implement industry-standard security measures to protect your information:</p>
+            <ul>
+                <li>End-to-end encryption for sensitive data</li>
+                <li>Regular security audits and penetration testing</li>
+                <li>Access controls and authentication requirements</li>
+                <li>Secure data centers with physical security measures</li>
+                <li>Employee training on data protection and privacy</li>
+            </ul>
+
+            <h2>Changes to This Privacy Policy</h2>
+            <p>We may update this Privacy Policy from time to time to reflect changes in our practices or applicable laws. We will notify you of any material changes by:</p>
+            <ul>
+                <li>Posting the updated policy in the app</li>
+                <li>Sending you an email notification</li>
+                <li>Displaying a prominent notice in the app</li>
+            </ul>
+            <p>Your continued use of the app after any changes indicates your acceptance of the updated Privacy Policy.</p>
+
+            <h2>Contact Us</h2>
+            <p>If you have any questions about this Privacy Policy or our data practices, please contact us:</p>
+            <ul>
+                <li><strong>Email:</strong> privacy@detache.app</li>
+                <li><strong>Address:</strong> Detache Privacy Team, 123 Recovery Lane, San Francisco, CA 94107</li>
+                <li><strong>Phone:</strong> 1-800-DETACHE (1-800-338-2243)</li>
+            </ul>
+
+            <p>We are committed to addressing your privacy concerns and will respond to your inquiries within 30 days.</p>
+
+            <h2>Commitment to Your Healing Journey</h2>
+            <p>At Detache, we believe that privacy and trust are essential components of healing. We are committed to maintaining the highest standards of data protection while providing you with the tools and support you need to navigate your recovery journey. Your trust is paramount, and we will continue to evolve our privacy practices to serve you better.</p>
+        </div>
+    </div>
+</body>
+</html>

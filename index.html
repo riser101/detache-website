@@ -107,7 +107,7 @@
 
         .nav-download-btn {
             background: transparent !important;
-            border: 2px solid #FF9800 !important;
+            border: 3px solid #FF9800 !important;
             color: white !important;
             padding: 10px 24px !important;
             border-radius: 8px !important;
@@ -146,6 +146,12 @@
             margin-bottom: 30px;
             line-height: 1.1;
             text-align: center;
+        }
+
+        .hero-main-text {
+            font-size: 32px;
+            display: block;
+            margin-bottom: 10px;
         }
 
         .rotating-text-container {
@@ -427,10 +433,11 @@
         }
 
         .app-store-btn {
-            background: rgba(0, 0, 0, 0.8);
+            background: transparent;
             color: white;
-            padding: 16px 32px;
-            border-radius: 12px;
+            padding: 0;
+            border: none;
+            border-radius: 0;
             text-decoration: none;
             font-weight: 600;
             transition: transform 0.3s;
@@ -441,6 +448,16 @@
 
         .app-store-btn:hover {
             transform: translateY(-2px);
+            background: transparent;
+        }
+
+        .app-store-btn.privacy-btn {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 16px 32px;
+            border-radius: 12px;
+        }
+
+        .app-store-btn.privacy-btn:hover {
             background: rgba(0, 0, 0, 0.9);
         }
 
@@ -496,18 +513,81 @@
             padding-top: 20px;
         }
 
+        .newsletter-signup {
+            margin: 40px 0;
+        }
+
+        .newsletter-signup h3 {
+            color: white;
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .signup-form {
+            display: flex;
+            gap: 10px;
+            max-width: 400px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .email-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 12px 16px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 14px;
+        }
+
+        .email-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .signup-btn {
+            background: linear-gradient(135deg, #FF9800, #FF6F00);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .signup-btn:hover {
+            transform: translateY(-2px);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero-title {
-                font-size: 48px;
+                font-size: 36px;
+                line-height: 1.2;
+            }
+            
+            .hero-main-text {
+                font-size: 24px;
             }
             
             .hero-subtitle {
-                font-size: 20px;
+                font-size: 18px;
+                padding: 0 10px;
+            }
+            
+            .hero-tagline {
+                font-size: 14px;
+                letter-spacing: 1px;
             }
             
             .section-title {
-                font-size: 36px;
+                font-size: 32px;
             }
             
             .cta-buttons {
@@ -517,6 +597,96 @@
             
             .nav-links {
                 display: none;
+            }
+            
+            .nav {
+                padding: 15px 20px;
+            }
+            
+            .logo {
+                font-size: 20px;
+            }
+            
+            .rotating-text-container {
+                min-height: 90px;
+            }
+            
+            .rotating-text {
+                font-size: 36px;
+                white-space: normal;
+                text-align: center;
+                max-width: 90%;
+                line-height: 1.1;
+            }
+            
+            .features {
+                padding: 80px 15px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .feature-card {
+                padding: 30px 20px;
+            }
+            
+            .how-it-works {
+                padding: 80px 15px;
+            }
+            
+            .steps {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .final-cta {
+                padding: 80px 15px;
+            }
+            
+            .final-cta-title {
+                font-size: 36px;
+            }
+            
+            .app-store-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .app-store-btn {
+                width: 200px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 32px;
+            }
+            
+            .hero-main-text {
+                font-size: 20px;
+            }
+            
+            .rotating-text {
+                font-size: 32px;
+            }
+            
+            .hero-subtitle {
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .feature-title {
+                font-size: 20px;
+            }
+            
+            .step-title {
+                font-size: 20px;
             }
         }
     </style>
@@ -554,7 +724,7 @@
         <div class="nav-content">
             <a href="#" class="logo">detache</a>
             <ul class="nav-links">
-                <li><a href="#about">About Us</a></li>
+                <li><a href="about.html">About Us</a></li>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#how-it-works">How It Works</a></li>
                 <li><a href="#download" class="nav-download-btn">Download</a></li>
@@ -567,7 +737,7 @@
         <div class="hero-content">
             <div class="hero-tagline">SELF-WORK FOR HIGH AGENCY PEOPLE</div>
             <h1 class="hero-title">
-                empower yourself in a separation with: 
+                <span class="hero-main-text">empower yourself in a separation with:</span>
                 <div class="rotating-text-container">
                     <span class="rotating-text">One-click Photo Removal Tool</span>
                     <span class="rotating-text active">Always-on AI Therapist</span>
@@ -578,8 +748,10 @@
             </h1>
             <p class="hero-subtitle">Transform your heartbreak into growth with intelligent photo removal, AI therapy, and expert insights.</p>
             <div class="cta-buttons">
-                <a href="#download" class="btn-primary">Download Free</a>
-                <a href="#features" class="btn-secondary">Learn More</a>
+                <a href="#" class="app-store-btn">
+                    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" style="height: 65px; width: auto;">
+                </a>
+                <a href="#features" class="btn-secondary" style="height: 65px; width:auto; display: flex; align-items: center; justify-content: center;">Learn More</a>
             </div>
         </div>
     </section>
@@ -627,82 +799,17 @@
         </div>
     </section>
 
-    <!-- How It Works Section -->
-    <section class="how-it-works" id="how-it-works">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tagline">SIMPLE. EFFECTIVE. PRIVATE.</div>
-                <h2 class="section-title">Your healing journey in 4 steps</h2>
-                <p class="section-subtitle">Start your recovery today with our scientifically-backed approach to breakup healing.</p>
-            </div>
-            
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3 class="step-title">Clean Your Digital Space</h3>
-                    <p class="step-description">Use our one-click photo removal tool to clear triggering images and create a fresh digital environment for healing.</p>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3 class="step-title">Talk to AI Therapist</h3>
-                    <p class="step-description">Share your feelings and experiences with our AI therapist. Process emotions in a safe, judgment-free space whenever you need support.</p>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3 class="step-title">Analyze Your Patterns</h3>
-                    <p class="step-description">Review your therapy sessions with our deep dive feature to understand your emotional patterns and track your healing progress.</p>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h3 class="step-title">Get Expert Insights</h3>
-                    <p class="step-description">Listen to relationship experts analyze your sessions and provide personalized guidance in easy-to-digest audio format.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat">
-                    <div class="stat-number">94%</div>
-                    <div class="stat-label">Feel better within 7 days</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">50K+</div>
-                    <div class="stat-label">Photos safely removed</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">10K+</div>
-                    <div class="stat-label">People healing daily</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">4.9★</div>
-                    <div class="stat-label">App Store rating</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Final CTA Section -->
     <section class="final-cta" id="download">
         <div class="container">
             <h2 class="final-cta-title">Ready to start healing?</h2>
             <p class="final-cta-subtitle">Join thousands who've transformed their heartbreak into growth. Download Detache and begin your journey to emotional freedom today.</p>
             <div class="app-store-buttons">
-                <a href="#" class="app-store-btn">
-                    <span>📱</span>
-                    Download for iOS
-                </a>
-                <a href="#" class="app-store-btn">
-                    <span>🔒</span>
-                    Privacy Protected
-                </a>
-            </div>
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <img src="instagram-icon.jpg" alt="Detache App Icon" style="height: 65px; width: 65px; border-radius: 16px;">
+                    <a href="#" class="app-store-btn">
+                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" style="height: 65px; width: auto;">
+                    </a>
         </div>
     </section>
 
@@ -712,10 +819,19 @@
             <div class="footer-logo">detache</div>
             <p class="footer-text">Empowering people to heal from heartbreak with compassionate technology and expert guidance.</p>
             <div class="footer-links">
-                <a href="#">Privacy Policy</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
                 <a href="#">Terms of Service</a>
-                <a href="#">Support</a>
-                <a href="#">Contact</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="faq.html">FAQs</a>
+                <a href="https://www.instagram.com/detachandgrow/" target="_blank">Instagram</a>
+            </div>
+            
+            <div class="newsletter-signup">
+                <h3>Stay updated with Detache</h3>
+                <div class="signup-form">
+                    <input type="email" placeholder="Email address" class="email-input">
+                    <button class="signup-btn">SIGN UP</button>
+                </div>
             </div>
             <div class="copyright">
                 © 2024 Detache. All rights reserved. • Made with ❤️ for healing hearts
