@@ -7,7 +7,7 @@
     <link rel="icon" type="image/jpeg" href="instagram-icon.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -21,77 +21,13 @@
             line-height: 1.6;
             color: white;
             background: #000;
-        }
-
-        .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            padding: 20px 40px;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(20px);
-        }
-
-        .nav-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Quicksand', sans-serif;
-            font-size: 24px;
-            font-weight: 700;
-            color: white;
-            text-decoration: none;
-            text-transform: uppercase;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #FF9800;
-        }
-
-        .nav-download-btn {
-            font-family: 'Quicksand', sans-serif !important;
-            background: transparent !important;
-            border: 3px solid #FF9800 !important;
-            color: white !important;
-            padding: 10px 24px !important;
-            border-radius: 8px !important;
-            font-weight: 600 !important;
-            font-size: 16px !important;
-            letter-spacing: 1.5px !important;
-            text-transform: uppercase !important;
-            transition: all 0.3s !important;
-        }
-
-        .nav-download-btn:hover {
-            background: transparent !important;
-            color: white !important;
-            border-color: #FF9800 !important;
+            padding-top: 80px; /* Account for fixed navigation */
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 120px 20px 60px;
+            padding: 60px 20px;
         }
 
         .hero-section {
@@ -442,52 +378,12 @@
         }
 
         @media (max-width: 768px) {
-            .nav {
-                padding: 15px 20px;
-            }
-
-            .nav-content {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                padding: 0 15px;
+            body {
+                padding-top: 70px; /* Adjust for smaller mobile nav */
             }
             
-            .nav-links {
-                display: flex;
-                gap: 8px;
-                align-items: center;
-            }
-            
-            .nav-links li a {
-                font-size: 10px;
-                padding: 4px 4px;
-                white-space: nowrap;
-            }
-            
-            .nav-download-btn {
-                padding: 6px 12px !important;
-                font-size: 10px !important;
-                border-radius: 4px !important;
-                border-width: 1px !important;
-                white-space: nowrap;
-                letter-spacing: 0.5px !important;
-            }
-            
-            .logo {
-                font-size: 16px;
-            }
-
-            .page-title {
-                font-size: 36px;
-            }
-
-            .page-subtitle {
-                font-size: 20px;
-            }
-
             .container {
-                padding: 100px 15px 40px;
+                padding: 40px 15px;
             }
 
             .app-showcase {
@@ -774,19 +670,9 @@
             }, 4000);
         }
     </script>
+    <script src="shared-nav.js"></script>
 </head>
 <body>
-    <nav class="nav">
-        <div class="nav-content">
-            <a href="index.html" class="logo">detache</a>
-            <ul class="nav-links">
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="index.html#features">Features</a></li>
-                <li><a href="index.html#download" class="nav-download-btn">Get Early Access</a></li>
-            </ul>
-        </div>
-    </nav>
-
     <div class="container">
         <div class="hero-section">
             <h1 class="page-title">About Detache</h1>
