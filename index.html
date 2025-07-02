@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detache - Navigate Breakups with AI-Powered Healing</title>
+    <title>Turn Your Breakup Into Your Breakthrough - Detache</title>
     <link rel="icon" type="image/jpeg" href="instagram-icon.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -113,6 +113,7 @@
         }
 
         .nav-download-btn {
+            font-family: 'Quicksand', sans-serif !important;
             background: transparent !important;
             border: 3px solid #FF9800 !important;
             color: white !important;
@@ -147,7 +148,7 @@
         }
 
         .hero-title {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Quicksand', sans-serif;
             font-size: 56px;
             font-weight: 700;
             color: white;
@@ -156,47 +157,18 @@
             text-align: center;
         }
 
-        .hero-main-text {
-            font-size: 32px;
-            display: block;
-            margin-bottom: 10px;
-        }
 
-        .rotating-text-container {
-            display: block;
-            position: relative;
-            min-height: 80px;
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .rotating-text {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%) translateY(20px);
-            opacity: 0;
-            transition: all 0.6s ease-in-out;
-            color: #FF9800;
-            font-weight: 900;
-            white-space: nowrap;
-        }
-
-        .rotating-text.active {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        .rotating-text.exiting {
-            opacity: 0;
-            transform: translateX(-50%) translateY(-20px);
-        }
 
         .hero-subtitle {
-            font-size: 24px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            font-weight: 400;
             color: rgba(255, 255, 255, 0.9);
             margin-bottom: 40px;
-            font-weight: 400;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.5;
         }
 
         /* Rolling Text Banner */
@@ -256,6 +228,7 @@
         }
 
         .btn-primary {
+            font-family: 'Quicksand', sans-serif;
             background: linear-gradient(135deg, #FF9800, #FF6F00);
             color: white;
             padding: 16px 32px;
@@ -274,6 +247,7 @@
         }
 
         .btn-secondary {
+            font-family: 'Quicksand', sans-serif;
             background: rgba(255, 255, 255, 0.1);
             color: white;
             padding: 16px 32px;
@@ -345,7 +319,6 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 16px;
             padding: 32px;
-            transition: transform 0.3s, box-shadow 0.3s;
             position: relative;
             min-height: 280px;
             display: flex;
@@ -353,9 +326,9 @@
         }
 
         .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            border-color: rgba(255, 152, 0, 0.3);
+            transform: none;
+            box-shadow: none;
+            border-color: rgba(255, 255, 255, 0.1);
         }
 
         .feature-number {
@@ -364,7 +337,7 @@
             right: 16px;
             font-size: 48px;
             font-weight: 800;
-            color: rgba(255, 152, 0, 0.3);
+            color: rgba(255, 255, 255, 0.2);
             line-height: 1;
         }
 
@@ -726,17 +699,7 @@
                 font-size: 20px;
             }
             
-            .rotating-text-container {
-                min-height: 90px;
-            }
-            
-            .rotating-text {
-                font-size: 36px;
-                white-space: normal;
-                text-align: center;
-                max-width: 90%;
-                line-height: 1.1;
-            }
+
             
             .features {
                 padding: 80px 15px;
@@ -806,9 +769,7 @@
                 font-size: 20px;
             }
             
-            .rotating-text {
-                font-size: 32px;
-            }
+
             
             .hero-subtitle {
                 font-size: 16px;
@@ -1075,31 +1036,8 @@
         }
     </style>
     <script>
-        // Text rotation functionality
+        // DOM Content Loaded
         document.addEventListener('DOMContentLoaded', function() {
-            const rotatingTexts = document.querySelectorAll('.rotating-text');
-            let currentIndex = 0;
-            
-            function rotateText() {
-                // Remove active class from current text
-                rotatingTexts[currentIndex].classList.remove('active');
-                rotatingTexts[currentIndex].classList.add('exiting');
-                
-                // Move to next text
-                currentIndex = (currentIndex + 1) % rotatingTexts.length;
-                
-                setTimeout(() => {
-                    // Remove exiting class from previous text
-                    rotatingTexts.forEach(text => text.classList.remove('exiting'));
-                    
-                    // Add active class to new text
-                    rotatingTexts[currentIndex].classList.add('active');
-                }, 300);
-            }
-            
-            // Start rotation
-            setInterval(rotateText, 3000); // Change every 3 seconds
-
             // Waitlist modal functionality
             setupWaitlistModal();
         });
@@ -1236,16 +1174,8 @@
     <section class="hero">
         <div class="hero-content">
             <!-- <div class="hero-tagline">SELF-WORK FOR HIGH AGENCY PEOPLE</div> -->
-            <h1 class="hero-title">
-                <span class="hero-main-text">Empower Yourself in a Separation With:</span>
-                <div class="rotating-text-container">
-                    <span class="rotating-text">Photo Archival Tool</span>
-                    <span class="rotating-text active">AI Therapist</span>
-                    <span class="rotating-text">Therapy Deep Dives</span>
-                    <span class="rotating-text">Narrative Therapy</span>
-                    <span class="rotating-text">Accountability</span>
-                </div>
-            </h1>
+            <h1 class="hero-title">Turn Your Breakup Into Your Breakthrough</h1>
+            <p class="hero-subtitle">Turn your deepest pain into your greatest catalyst. The only platform that transforms separation trauma into accelerated personal growth through evidence-based tools, 24/7 support, and complete digital detox.</p>
             <!-- <p class="hero-subtitle">Transform your heartbreak into growth with intelligent photo removal, AI therapy, and expert insights.</p> -->
             <div class="cta-buttons">
                 <div class="app-store-section">
@@ -1264,44 +1194,39 @@
     <section class="features" id="features">
         <div class="container">
             <div class="section-header">
-                <div class="section-tagline">POWERFUL HEALING TOOLS</div>
-                <h2 class="section-title">Everything you need to heal and move forward</h2>
-                <p class="section-subtitle">Four evidence-based features designed by therapists and technologists to support your emotional recovery journey.</p>
+                <div class="section-tagline">TRANSFORMATION ACCELERATORS</div>
+                <h2 class="section-title">Turn your separation into your strongest comeback</h2>
+                <p class="section-subtitle">Five proven methods to transform breakup pain into rapid personal growth and unlock your full potential faster than ever before.</p>
             </div>
             
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-number">1</div>
-                    <div class="feature-label">TOOL</div>
-                    <h3 class="feature-title">Photo Archival Tool</h3>
-                    <p class="feature-description">One tap archives everything—photos, videos, iCloud content. Unlike iPhone that misses videos, iCloud and crashes during exports, our privacy-first AI handles complete digital detox across your entire iPhone ecosystem. Transform your device from an emotional weapon back into a tool for your new life.</p>
+                    <h3 class="feature-title">Complete Digital Detox</h3>
+                    <p class="feature-description">Instantly remove every trigger from your digital life. One tap archives all photos, videos, and iCloud content across your entire iPhone ecosystem. Transform your device from an emotional weapon into a catalyst for your new chapter—because healing starts with controlling your environment.</p>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-number">2</div>
-                    <div class="feature-label">AI</div>
-                    <h3 class="feature-title">AI Therapist</h3>
-                    <p class="feature-description">24/7 access to a compassionate AI therapist trained in breakup recovery techniques. Process emotions, gain insights, and develop healthy coping strategies.</p>
+                    <h3 class="feature-title">24/7 Growth Coaching</h3>
+                    <p class="feature-description">Access unlimited support that turns every emotional breakdown into a breakthrough moment. Our intelligent coach helps you process pain, extract lessons, and accelerate your personal development—available whenever you need it most.</p>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-number">3</div>
-                    <div class="feature-label">ANALYSIS</div>
-                    <h3 class="feature-title">Therapy Deep Dives</h3>
-                    <p class="feature-description">Review and analyze your therapy conversations to understand emotional patterns, track progress, and identify breakthrough moments in your healing journey.</p>
+                    <h3 class="feature-title">Growth Pattern Analysis</h3>
+                    <p class="feature-description">Discover hidden insights from your conversations that reveal your transformation patterns. Track breakthrough moments, identify growth triggers, and accelerate your progress with data-driven self-awareness.</p>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-number">4</div>
-                    <div class="feature-label">THERAPY</div>
-                    <h3 class="feature-title">Narrative Therapy</h3>
-                    <p class="feature-description">Listen to two AI relationship experts discuss your therapy sessions, highlighting insights and providing personalized recommendations in podcast format.</p>
+                    <h3 class="feature-title">Breakthrough Podcasts</h3>
+                    <p class="feature-description">Your personal transformation story, narrated by experts who analyze your journey and reveal growth opportunities you might miss. Turn your pain into wisdom with personalized insights delivered as engaging audio content.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-number">5</div>
-                    <div class="feature-label">SUPPORT</div>
-                    <h3 class="feature-title">Accountability</h3>
-                    <p class="feature-description">Intelligent push notifications to keep you on-track on the healing journey.</p>
+                    <h3 class="feature-title">Momentum Keeper</h3>
+                    <p class="feature-description">Smart reminders that keep you moving toward your breakthrough. Never lose momentum in your transformation with personalized nudges that arrive exactly when you need them most.</p>
                 </div>                
             </div>
         </div>
@@ -1310,8 +1235,8 @@
     <!-- Final CTA Section -->
     <section class="final-cta" id="download">
         <div class="container">
-            <h2 class="final-cta-title">Ready to start healing?</h2>
-            <p class="final-cta-subtitle">Join thousands who've transformed their separation into growth. Download Detache and begin your journey to emotional freedom today.</p>
+            <h2 class="final-cta-title">Ready for your breakthrough?</h2>
+            <p class="final-cta-subtitle">Join thousands who've turned their most painful separation into their strongest comeback. Transform your breakup into rocket fuel for the life you've always wanted.</p>
             <div class="app-store-buttons">
                 <div class="app-download-container">
                     <!-- <img src="instagram-icon.jpg" alt="Detache App Icon" class="app-icon"> -->
@@ -1332,7 +1257,7 @@
         <div class="footer-content">
             <div class="footer-logo">detache</div>
             
-            <p class="footer-text">Empowering people to heal from separation with compassionate technology and expert guidance.</p>
+            <p class="footer-text">Transforming separation pain into breakthrough growth with evidence-based tools and expert guidance.</p>
             <div class="footer-links">
                 <a href="privacy-policy.html">Privacy Policy</a>
                 <a href="#">Terms of Service</a>
@@ -1359,7 +1284,7 @@
         <div class="waitlist-modal-content">
             <span class="waitlist-close">&times;</span>
             <h2 class="waitlist-title">Join the Waitlist</h2>
-            <p class="waitlist-subtitle">Be the first to know when Detache launches and get early access to transform your separation into growth.</p>
+            <p class="waitlist-subtitle">Be the first to know when Detache launches and get early access to turn your breakup into your greatest breakthrough.</p>
             <form id="waitlistForm" class="waitlist-form">
                 <input 
                     type="email" 
