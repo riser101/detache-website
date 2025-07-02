@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detache - About Us</title>
+    <link rel="icon" type="image/jpeg" href="instagram-icon.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,7 +16,8 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 500;
             line-height: 1.6;
             color: white;
             background: #000;
@@ -39,10 +44,12 @@
         }
 
         .logo {
+            font-family: 'Quicksand', sans-serif;
             font-size: 24px;
-            font-weight: 800;
-            color: #FF9800;
+            font-weight: 700;
+            color: white;
             text-decoration: none;
+            text-transform: uppercase;
         }
 
         .back-link {
@@ -68,8 +75,9 @@
         }
 
         .page-title {
+            font-family: 'Montserrat', sans-serif;
             font-size: 48px;
-            font-weight: 800;
+            font-weight: 700;
             color: #FF9800;
             margin-bottom: 20px;
         }
@@ -114,11 +122,11 @@
         }
 
         .app-store-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: transparent;
+            border: none;
             color: white;
-            padding: 16px 32px;
-            border-radius: 12px;
+            padding: 0;
+            border-radius: 0;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
@@ -129,8 +137,8 @@
         }
 
         .app-store-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.5);
+            background: transparent;
+            border: none;
             transform: translateY(-2px);
         }
 
@@ -139,6 +147,7 @@
         }
 
         .section-title {
+            font-family: 'Montserrat', sans-serif;
             font-size: 32px;
             font-weight: 700;
             color: white;
@@ -247,6 +256,167 @@
             font-size: 14px;
         }
 
+        /* Coming Soon Badge and Inactive Button Styles */
+        .app-store-btn-inactive {
+            display: inline-block;
+            opacity: 0.5;
+            filter: grayscale(60%);
+            cursor: not-allowed;
+            transition: opacity 0.3s ease;
+            position: relative;
+        }
+
+        .app-store-btn-inactive:hover {
+            opacity: 0.6;
+        }
+
+        .coming-soon-badge {
+            position: absolute;
+            top: -13px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 9px;
+            font-weight: 600;
+            color: #ff4444;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2px 6px;
+            border-radius: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+
+        /* Waitlist Modal Styles */
+        .waitlist-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .waitlist-modal-content {
+            background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+            margin: 10% auto;
+            padding: 40px;
+            border: 1px solid rgba(255, 152, 0, 0.3);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            text-align: center;
+        }
+
+        .waitlist-close {
+            color: rgba(255, 255, 255, 0.6);
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .waitlist-close:hover {
+            color: #FF9800;
+        }
+
+        .waitlist-title {
+            color: #FF9800;
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .waitlist-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .waitlist-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .waitlist-input {
+            padding: 16px 20px;
+            border: 2px solid rgba(255, 152, 0, 0.3);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-size: 16px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .waitlist-input:focus {
+            outline: none;
+            border-color: #FF9800;
+        }
+
+        .waitlist-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .waitlist-submit {
+            background: linear-gradient(135deg, #FF9800, #FF6F00);
+            color: white;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .waitlist-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 152, 0, 0.3);
+        }
+
+        .waitlist-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            z-index: 1001;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.3s ease;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .toast-error {
+            background: linear-gradient(135deg, #f44336, #d32f2f);
+        }
+
         @media (max-width: 768px) {
             .nav {
                 padding: 15px 20px;
@@ -289,6 +459,114 @@
             }
         }
     </style>
+    <script>
+        // Waitlist Modal Setup
+        document.addEventListener('DOMContentLoaded', function() {
+            setupWaitlistModal();
+        });
+
+        function setupWaitlistModal() {
+            const modal = document.getElementById('waitlistModal');
+            const joinButtons = document.querySelectorAll('.app-store-btn');
+            const closeBtn = document.querySelector('.waitlist-close');
+            const form = document.getElementById('waitlistForm');
+
+            // Open modal when App Store buttons are clicked
+            joinButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    modal.style.display = 'block';
+                });
+            });
+
+            // Close modal when X is clicked
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+                form.reset();
+            });
+
+            // Close modal when clicking outside
+            window.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    form.reset();
+                }
+            });
+
+            // Handle form submission
+            form.addEventListener('submit', handleWaitlistSubmit);
+        }
+
+        // Handle waitlist form submission
+        async function handleWaitlistSubmit(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('waitlistSubmit');
+            const emailInput = document.getElementById('waitlistEmail');
+            const email = emailInput.value.trim();
+
+            if (!email || !isValidEmail(email)) {
+                showToast('Please enter a valid email address', 'error');
+                return;
+            }
+
+            // Disable submit button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Joining...';
+
+            try {
+                // Replace this URL with your Google Apps Script Web App URL
+                const response = await fetch('https://script.google.com/macros/s/AKfycbxegkSDydos3PV1FqUf6iVw1vfaA7RVc3ulZhp2VB4srdweArVvCUeiSMlzMQqdyDr32A/exec', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        timestamp: new Date().toISOString(),
+                        source: 'about-page'
+                    }),
+                    mode: 'no-cors'
+                });
+
+                showToast('🎉 Successfully joined the waitlist!');
+                document.getElementById('waitlistModal').style.display = 'none';
+                document.getElementById('waitlistForm').reset();
+
+            } catch (error) {
+                console.error('Error:', error);
+                showToast('Something went wrong. Please try again.', 'error');
+            } finally {
+                // Re-enable submit button
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Join Waitlist';
+            }
+        }
+
+        // Email validation
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Show toast notification
+        function showToast(message, type = 'success') {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type === 'error' ? 'toast-error' : ''}`;
+            toast.textContent = message;
+            
+            document.body.appendChild(toast);
+            
+            // Trigger animation
+            setTimeout(() => toast.classList.add('show'), 100);
+            
+            // Remove toast after 4 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => document.body.removeChild(toast), 300);
+            }, 4000);
+        }
+    </script>
 </head>
 <body>
     <nav class="nav">
@@ -304,12 +582,16 @@
             <p class="page-subtitle">Empowering your healing journey with compassionate technology</p>
             
             <div class="app-showcase">
-                <div class="app-icon">D</div>
+                <div class="app-icon">
+                    <img src="instagram-icon.jpg" alt="Detache App Icon" style="width: 100%; height: 100%; border-radius: 24px; object-fit: cover;">
+                </div>
                 <div class="download-section">
-                    <p class="download-text">Transform your heartbreak into growth</p>
+                    <p class="download-text">Transform your separation into growth</p>
                     <a href="#" class="app-store-btn">
-                        <span>📱</span>
-                        Download on the App Store
+                        <div class="app-store-btn-inactive">
+                            <span class="coming-soon-badge">Coming Soon</span>
+                            <img src="Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" alt="Download on the App Store - Coming Soon" style="height: 60px; width: auto;">
+                        </div>
                     </a>
                 </div>
             </div>
@@ -317,7 +599,7 @@
 
         <div class="mission-box">
             <div class="mission-quote">
-                "We believe that heartbreak, while painful, can be a catalyst for profound personal growth and self-discovery."
+                "We believe that separation, while painful, can be a catalyst for profound personal growth and self-discovery."
             </div>
         </div>
 
@@ -329,25 +611,6 @@
             <p class="section-content">
                 Our mission is to transform the healing process by combining evidence-based therapeutic approaches with cutting-edge AI technology. We provide tools that not only help you process emotions and gain insights but also actively support your journey toward emotional freedom and personal growth.
             </p>
-        </div>
-
-        <div class="stats-grid">
-            <div class="stat">
-                <div class="stat-number">10K+</div>
-                <div class="stat-label">People healing daily</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">94%</div>
-                <div class="stat-label">Feel better within 7 days</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">50K+</div>
-                <div class="stat-label">Photos safely removed</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">4.9★</div>
-                <div class="stat-label">App Store rating</div>
-            </div>
         </div>
 
         <div class="content-section">
@@ -418,18 +681,41 @@
                 We understand that trusting an app with your most vulnerable moments is a big decision. That's why we've designed Detache with the utmost care for your emotional wellbeing and privacy.
             </p>
             <p class="section-content">
-                Our team includes licensed therapists, AI researchers, and people who have walked the path of heartbreak themselves. We're not just building technology; we're creating a companion for one of life's most challenging journeys.
+                Our team includes licensed therapists, AI researchers, and people who have walked the path of separation themselves. We're not just building technology; we're creating a companion for one of life's most challenging journeys.
             </p>
             <p class="section-content">
-                Join thousands of people who have chosen to transform their heartbreak into growth. Your healing journey starts with a single step, and we're here to walk alongside you every step of the way.
+                Join thousands of people who have chosen to transform their separation into growth. Your healing journey starts with a single step, and we're here to walk alongside you every step of the way.
             </p>
         </div>
 
         <div style="text-align: center; margin: 60px 0;">
             <a href="#" class="app-store-btn">
-                <span>📱</span>
-                Start Your Healing Journey Today
+                <div class="app-store-btn-inactive">
+                    <span class="coming-soon-badge">Coming Soon</span>
+                    <img src="Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" alt="Start Your Healing Journey Today - Download on the App Store - Coming Soon" style="height: 60px; width: auto;">
+                </div>
             </a>
+        <!-- </div> -->
+    </div>
+
+    <!-- Waitlist Modal -->
+    <div id="waitlistModal" class="waitlist-modal">
+        <div class="waitlist-modal-content">
+            <span class="waitlist-close">&times;</span>
+            <h2 class="waitlist-title">Join the Waitlist</h2>
+            <p class="waitlist-subtitle">Be the first to know when Detache launches and get early access to transform your separation into growth.</p>
+            <form id="waitlistForm" class="waitlist-form">
+                <input 
+                    type="email" 
+                    id="waitlistEmail" 
+                    class="waitlist-input" 
+                    placeholder="Enter your email address" 
+                    required
+                >
+                <button type="submit" id="waitlistSubmit" class="waitlist-submit">
+                    Join Waitlist
+                </button>
+            </form>
         </div>
     </div>
 </body>

@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detache - Navigate Breakups with AI-Powered Healing</title>
+    <link rel="icon" type="image/jpeg" href="instagram-icon.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,7 +16,8 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 500;
             line-height: 1.6;
             color: #333;
             overflow-x: hidden;
@@ -82,10 +87,12 @@
         }
 
         .logo {
+            font-family: 'Quicksand', sans-serif;
             font-size: 24px;
-            font-weight: 800;
-            color: #FF9800;
+            font-weight: 700;
+            color: white;
             text-decoration: none;
+            text-transform: uppercase;
         }
 
         .nav-links {
@@ -140,8 +147,9 @@
         }
 
         .hero-title {
+            font-family: 'Montserrat', sans-serif;
             font-size: 56px;
-            font-weight: 900;
+            font-weight: 700;
             color: white;
             margin-bottom: 30px;
             line-height: 1.1;
@@ -189,6 +197,55 @@
             color: rgba(255, 255, 255, 0.9);
             margin-bottom: 40px;
             font-weight: 400;
+        }
+
+        /* Rolling Text Banner */
+        .rolling-text-banner {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 152, 0, 0.3);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .rolling-text-content {
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            animation: rollLeft 45s linear infinite;
+            gap: 30px;
+        }
+
+        .rolling-phrase {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 18px;
+            font-weight: 800;
+            color: #FF9800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .rolling-separator {
+            font-size: 20px;
+            color: rgba(255, 152, 0, 0.6);
+            font-weight: bold;
+        }
+
+        @keyframes rollLeft {
+            0% {
+                transform: translateX(100vw);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
         }
 
         .cta-buttons {
@@ -262,8 +319,9 @@
         }
 
         .section-title {
+            font-family: 'Montserrat', sans-serif;
             font-size: 48px;
-            font-weight: 800;
+            font-weight: 700;
             color: white;
             margin-bottom: 20px;
         }
@@ -283,41 +341,56 @@
         }
 
         .feature-card {
-            background: linear-gradient(135deg, rgba(255, 152, 0, 0.1), rgba(255, 111, 0, 0.05));
-            border: 1px solid rgba(255, 152, 0, 0.2);
-            border-radius: 20px;
-            padding: 40px;
+            background: rgba(40, 40, 40, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 32px;
             transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
         }
 
         .feature-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(255, 152, 0, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 152, 0, 0.3);
         }
 
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #FF9800, #FF6F00);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-            font-size: 24px;
+        .feature-number {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            font-size: 48px;
+            font-weight: 800;
+            color: rgba(255, 152, 0, 0.3);
+            line-height: 1;
+        }
+
+        .feature-label {
+            color: rgba(255, 152, 0, 0.8);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
         }
 
         .feature-title {
+            font-family: 'Montserrat', sans-serif;
             font-size: 24px;
-            font-weight: 700;
+            font-weight: 500;
             color: white;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
+            line-height: 1.3;
         }
 
         .feature-description {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 15px;
             line-height: 1.6;
+            flex-grow: 1;
         }
 
         /* How It Works Section */
@@ -353,8 +426,9 @@
         }
 
         .step-title {
+            font-family: 'Montserrat', sans-serif;
             font-size: 24px;
-            font-weight: 700;
+            font-weight: 500;
             color: white;
             margin-bottom: 16px;
         }
@@ -410,8 +484,9 @@
         }
 
         .final-cta-title {
+            font-family: 'Montserrat', sans-serif;
             font-size: 48px;
-            font-weight: 800;
+            font-weight: 700;
             color: white;
             margin-bottom: 20px;
         }
@@ -474,10 +549,12 @@
         }
 
         .footer-logo {
+            font-family: 'Quicksand', sans-serif;
             font-size: 28px;
-            font-weight: 800;
-            color: #FF9800;
+            font-weight: 700;
+            color: white;
             margin-bottom: 20px;
+            text-transform: uppercase;
         }
 
         .footer-text {
@@ -700,6 +777,24 @@
                 width: 200px;
                 justify-content: center;
             }
+            
+            .rolling-text-banner {
+                height: 50px;
+            }
+            
+            .rolling-phrase {
+                font-size: 14px;
+                letter-spacing: 1px;
+            }
+            
+            .rolling-separator {
+                font-size: 16px;
+            }
+            
+            .rolling-text-content {
+                gap: 20px;
+                animation: rollLeft 35s linear infinite;
+            }
         }
 
         @media (max-width: 480px) {
@@ -729,6 +824,24 @@
             
             .step-title {
                 font-size: 20px;
+            }
+            
+            .rolling-text-banner {
+                height: 45px;
+            }
+            
+            .rolling-phrase {
+                font-size: 12px;
+                letter-spacing: 0.5px;
+            }
+            
+            .rolling-separator {
+                font-size: 14px;
+            }
+            
+            .rolling-text-content {
+                gap: 15px;
+                animation: rollLeft 30s linear infinite;
             }
         }
 
@@ -831,6 +944,135 @@
                 gap: 15px;
             }
         }
+
+        /* Waitlist Modal Styles */
+        .waitlist-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .waitlist-modal-content {
+            background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+            margin: 10% auto;
+            padding: 40px;
+            border: 1px solid rgba(255, 152, 0, 0.3);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            text-align: center;
+        }
+
+        .waitlist-close {
+            color: rgba(255, 255, 255, 0.6);
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .waitlist-close:hover {
+            color: #FF9800;
+        }
+
+        .waitlist-title {
+            color: #FF9800;
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .waitlist-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .waitlist-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .waitlist-input {
+            padding: 16px 20px;
+            border: 2px solid rgba(255, 152, 0, 0.3);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-size: 16px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .waitlist-input:focus {
+            outline: none;
+            border-color: #FF9800;
+        }
+
+        .waitlist-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .waitlist-submit {
+            background: linear-gradient(135deg, #FF9800, #FF6F00);
+            color: white;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .waitlist-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 152, 0, 0.3);
+        }
+
+        .waitlist-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            z-index: 1001;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.3s ease;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .toast-error {
+            background: linear-gradient(135deg, #f44336, #d32f2f);
+        }
     </style>
     <script>
         // Text rotation functionality
@@ -857,6 +1099,9 @@
             
             // Start rotation
             setInterval(rotateText, 3000); // Change every 3 seconds
+
+            // Waitlist modal functionality
+            setupWaitlistModal();
         });
         
         // Match button widths
@@ -869,6 +1114,109 @@
                 learnMoreButton.style.width = appStoreWidth + 'px';
             }
         });
+
+        // Waitlist Modal Setup
+        function setupWaitlistModal() {
+            const modal = document.getElementById('waitlistModal');
+            const joinButtons = document.querySelectorAll('.nav-download-btn');
+            const closeBtn = document.querySelector('.waitlist-close');
+            const form = document.getElementById('waitlistForm');
+
+            // Open modal when Join Waitlist buttons are clicked
+            joinButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    modal.style.display = 'block';
+                });
+            });
+
+            // Close modal when X is clicked
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+                form.reset();
+            });
+
+            // Close modal when clicking outside
+            window.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    form.reset();
+                }
+            });
+
+            // Handle form submission
+            form.addEventListener('submit', handleWaitlistSubmit);
+        }
+
+        // Handle waitlist form submission
+        async function handleWaitlistSubmit(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('waitlistSubmit');
+            const emailInput = document.getElementById('waitlistEmail');
+            const email = emailInput.value.trim();
+
+            if (!email || !isValidEmail(email)) {
+                showToast('Please enter a valid email address', 'error');
+                return;
+            }
+
+            // Disable submit button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Joining...';
+
+            try {
+                // Replace this URL with your Google Apps Script Web App URL
+                const response = await fetch('https://script.google.com/macros/s/AKfycbxegkSDydos3PV1FqUf6iVw1vfaA7RVc3ulZhp2VB4srdweArVvCUeiSMlzMQqdyDr32A/exec', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        timestamp: new Date().toISOString(),
+                        source: 'website'
+                    }),
+                    mode: 'no-cors'
+                });
+
+                showToast('🎉 Successfully joined the waitlist!');
+                document.getElementById('waitlistModal').style.display = 'none';
+                document.getElementById('waitlistForm').reset();
+
+            } catch (error) {
+                console.error('Error:', error);
+                showToast('Something went wrong. Please try again.', 'error');
+            } finally {
+                // Re-enable submit button
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Join Waitlist';
+            }
+        }
+
+        // Email validation
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Show toast notification
+        function showToast(message, type = 'success') {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type === 'error' ? 'toast-error' : ''}`;
+            toast.textContent = message;
+            
+            document.body.appendChild(toast);
+            
+            // Trigger animation
+            setTimeout(() => toast.classList.add('show'), 100);
+            
+            // Remove toast after 4 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => document.body.removeChild(toast), 300);
+            }, 4000);
+        }
     </script>
 </head>
 <body>
@@ -887,18 +1235,18 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <div class="hero-tagline">SELF-WORK FOR HIGH AGENCY PEOPLE</div>
+            <!-- <div class="hero-tagline">SELF-WORK FOR HIGH AGENCY PEOPLE</div> -->
             <h1 class="hero-title">
-                <span class="hero-main-text">empower yourself in a separation with:</span>
+                <span class="hero-main-text">Empower Yourself in a Separation With:</span>
                 <div class="rotating-text-container">
-                    <span class="rotating-text">Photo Removal Tool</span>
+                    <span class="rotating-text">Photo Archival Tool</span>
                     <span class="rotating-text active">AI Therapist</span>
                     <span class="rotating-text">Therapy Deep Dives</span>
                     <span class="rotating-text">Narrative Therapy</span>
                     <span class="rotating-text">Accountability</span>
                 </div>
             </h1>
-            <p class="hero-subtitle">Transform your heartbreak into growth with intelligent photo removal, AI therapy, and expert insights.</p>
+            <!-- <p class="hero-subtitle">Transform your heartbreak into growth with intelligent photo removal, AI therapy, and expert insights.</p> -->
             <div class="cta-buttons">
                 <div class="app-store-section">
                     <div class="app-store-btn-inactive">
@@ -923,33 +1271,37 @@
             
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3 class="feature-title">Photo Removal Tool</h3>
-                    <p class="feature-description">Instantly remove all photos of your ex-partner from your phone with our AI-powered recognition technology. Clean your digital space in seconds, not hours.</p>
+                    <div class="feature-number">1</div>
+                    <div class="feature-label">TOOL</div>
+                    <h3 class="feature-title">Photo Archival Tool</h3>
+                    <p class="feature-description">One tap archives everything—photos, videos, iCloud content. Unlike iPhone that misses videos, iCloud and crashes during exports, our privacy-first AI handles complete digital detox across your entire iPhone ecosystem. Transform your device from an emotional weapon back into a tool for your new life.</p>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">🤖</div>
+                    <div class="feature-number">2</div>
+                    <div class="feature-label">AI</div>
                     <h3 class="feature-title">AI Therapist</h3>
                     <p class="feature-description">24/7 access to a compassionate AI therapist trained in breakup recovery techniques. Process emotions, gain insights, and develop healthy coping strategies.</p>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">📊</div>
+                    <div class="feature-number">3</div>
+                    <div class="feature-label">ANALYSIS</div>
                     <h3 class="feature-title">Therapy Deep Dives</h3>
                     <p class="feature-description">Review and analyze your therapy conversations to understand emotional patterns, track progress, and identify breakthrough moments in your healing journey.</p>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">🎧</div>
+                    <div class="feature-number">4</div>
+                    <div class="feature-label">THERAPY</div>
                     <h3 class="feature-title">Narrative Therapy</h3>
                     <p class="feature-description">Listen to two AI relationship experts discuss your therapy sessions, highlighting insights and providing personalized recommendations in podcast format.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🎧</div>
+                    <div class="feature-number">5</div>
+                    <div class="feature-label">SUPPORT</div>
                     <h3 class="feature-title">Accountability</h3>
-                    <p class="feature-description">Intelligent push notifications to keep you on-track on the healing 
-                    journey.</p>
+                    <p class="feature-description">Intelligent push notifications to keep you on-track on the healing journey.</p>
                 </div>                
             </div>
         </div>
@@ -959,7 +1311,7 @@
     <section class="final-cta" id="download">
         <div class="container">
             <h2 class="final-cta-title">Ready to start healing?</h2>
-            <p class="final-cta-subtitle">Join thousands who've transformed their heartbreak into growth. Download Detache and begin your journey to emotional freedom today.</p>
+            <p class="final-cta-subtitle">Join thousands who've transformed their separation into growth. Download Detache and begin your journey to emotional freedom today.</p>
             <div class="app-store-buttons">
                 <div class="app-download-container">
                     <!-- <img src="instagram-icon.jpg" alt="Detache App Icon" class="app-icon"> -->
@@ -979,7 +1331,8 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-logo">detache</div>
-            <p class="footer-text">Empowering people to heal from heartbreak with compassionate technology and expert guidance.</p>
+            
+            <p class="footer-text">Empowering people to heal from separation with compassionate technology and expert guidance.</p>
             <div class="footer-links">
                 <a href="privacy-policy.html">Privacy Policy</a>
                 <a href="#">Terms of Service</a>
@@ -1000,5 +1353,26 @@
             </div>
         </div>
     </footer>
+
+    <!-- Waitlist Modal -->
+    <div id="waitlistModal" class="waitlist-modal">
+        <div class="waitlist-modal-content">
+            <span class="waitlist-close">&times;</span>
+            <h2 class="waitlist-title">Join the Waitlist</h2>
+            <p class="waitlist-subtitle">Be the first to know when Detache launches and get early access to transform your separation into growth.</p>
+            <form id="waitlistForm" class="waitlist-form">
+                <input 
+                    type="email" 
+                    id="waitlistEmail" 
+                    class="waitlist-input" 
+                    placeholder="Enter your email address" 
+                    required
+                >
+                <button type="submit" id="waitlistSubmit" class="waitlist-submit">
+                    Join Waitlist
+                </button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
