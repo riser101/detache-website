@@ -363,9 +363,13 @@
             }
         }
     </style>
+    <script src="shared-nav.js"></script>
     <script>
         // DOM Content Loaded
         document.addEventListener('DOMContentLoaded', function() {
+            // Setup shared navigation
+            setupSharedNavigation();
+            
             // Setup scroll progress bar
             setupScrollProgress();
         });
@@ -427,16 +431,7 @@
     </script>
 </head>
 <body>
-    <nav class="nav">
-        <div class="nav-content">
-            <a href="index.html" class="logo">detache</a>
-            <ul class="nav-links">
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="index.html#features">Features</a></li>
-                <li><a href="index.html#download" class="nav-download-btn">Get Early Access</a></li>
-            </ul>
-        </div>
-    </nav>
+    <div id="navigation-container"></div>
 
     <div class="container">
         <h1 class="page-title">DETACHE Privacy Policy</h1>
