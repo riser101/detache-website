@@ -86,6 +86,94 @@
             align-items: center;
         }
 
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-menu {
+            display: block;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+        }
+
+        .mobile-menu.active {
+            max-height: 300px;
+            padding: 30px 20px;
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            align-items: stretch;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease-in-out 0.1s, transform 0.3s ease-in-out 0.1s;
+        }
+
+        .mobile-menu.active .mobile-nav-links {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mobile-nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 16px 0;
+            transition: color 0.3s;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+
+        .mobile-nav-links a:last-child {
+            border-bottom: none;
+            margin-top: 10px;
+        }
+
+        .mobile-nav-links a:hover {
+            color: #FF9800;
+        }
+
+        .mobile-nav-btn {
+            font-family: 'Quicksand', sans-serif !important;
+            background: linear-gradient(135deg, #FF9800, #FF6F00) !important;
+            color: white !important;
+            padding: 16px 24px !important;
+            border: none !important;
+            border-radius: 12px !important;
+            font-weight: 600 !important;
+            font-size: 16px !important;
+            letter-spacing: 1.5px !important;
+            text-transform: uppercase !important;
+            transition: all 0.3s !important;
+            text-decoration: none !important;
+            display: inline-block !important;
+            text-align: center !important;
+            margin-top: 10px !important;
+        }
+
+        .mobile-nav-btn:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 10px 30px rgba(255, 152, 0, 0.3) !important;
+            color: white !important;
+        }
+
         .logo {
             font-family: 'Quicksand', sans-serif;
             font-size: 24px;
@@ -156,8 +244,6 @@
             line-height: 1.1;
             text-align: center;
         }
-
-
 
         .hero-subtitle {
             font-family: 'Inter', sans-serif;
@@ -633,8 +719,17 @@
             font-size: 14px;
         }
 
+
+
         /* Responsive */
         @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
             .hero-title {
                 font-size: 36px;
                 line-height: 1.2;
@@ -674,43 +769,11 @@
             }
             
             .nav-content {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                padding: 0 15px;
-            }
-            
-            .nav-links {
-                display: flex;
-                gap: 8px;
-                align-items: center;
-            }
-            
-            .nav-links li a {
-                font-size: 10px;
-                padding: 4px 4px;
-                white-space: nowrap;
-            }
-            
-            .nav-download-btn {
-                padding: 6px 12px !important;
-                font-size: 10px !important;
-                border-radius: 4px !important;
-                border-width: 1px !important;
-                white-space: nowrap;
-                letter-spacing: 0.5px !important;
+                padding: 0 20px;
             }
             
             .nav {
-                padding: 12px 0;
-            }
-            
-            .logo {
-                font-size: 16px;
-            }
-            
-            .nav {
-                padding: 15px 20px;
+                padding: 15px 0;
             }
             
             .logo {
@@ -1095,6 +1158,8 @@
             setupWaitlistModal();
             // Setup scroll progress bar
             setupScrollProgress();
+            // Setup mobile menu
+            setupMobileMenu();
         });
         
         // Match button widths
@@ -1265,6 +1330,31 @@
             // Initial call
             updateProgress();
         }
+
+        // Setup mobile menu functionality
+        function setupMobileMenu() {
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            mobileMenuToggle.addEventListener('click', function() {
+                mobileMenu.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking on links
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                });
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!mobileMenuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+                    mobileMenu.classList.remove('active');
+                }
+            });
+        }
     </script>
 </head>
 <body>
@@ -1277,6 +1367,14 @@
                 <li><a href="#features">Features</a></li>
                 <li><a href="#download" class="nav-download-btn">Get Early Access</a></li>
             </ul>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-nav-links">
+                <a href="about.html">About Us</a>
+                <a href="#features">Features</a>
+                <a href="#download" class="mobile-nav-btn">Get Early Access</a>
+            </div>
         </div>
     </nav>
 
@@ -1306,7 +1404,6 @@
             <div class="section-header">
                 <div class="section-tagline">TRANSFORMATION ACCELERATORS</div>
                 <h2 class="section-title">Turn your separation into your strongest comeback</h2>
-                <p class="section-subtitle">Complete digital detox that removes every trigger, 24/7 intelligent coaching that processes your emotions, breakthrough analysis that reveals your patterns, and personalized insights delivered as podcast-style content.</p>
             </div>
             
             <div class="features-grid">
