@@ -7,7 +7,7 @@
     <link rel="icon" type="image/jpeg" href="instagram-icon.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -16,8 +16,8 @@
         }
 
         body {
-            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-weight: 500;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 400;
             line-height: 1.6;
             color: #333;
             overflow-x: hidden;
@@ -160,7 +160,7 @@
 
 
         .hero-subtitle {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 20px;
             font-weight: 400;
             color: rgba(255, 255, 255, 0.9);
@@ -196,9 +196,9 @@
         }
 
         .rolling-phrase {
-            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Quicksand', sans-serif;
             font-size: 18px;
-            font-weight: 800;
+            font-weight: 700;
             color: #FF9800;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -293,7 +293,7 @@
         }
 
         .section-title {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Quicksand', sans-serif;
             font-size: 48px;
             font-weight: 700;
             color: white;
@@ -351,9 +351,9 @@
         }
 
         .feature-title {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Nunito', sans-serif;
             font-size: 24px;
-            font-weight: 500;
+            font-weight: 600;
             color: white;
             margin-bottom: 20px;
             line-height: 1.3;
@@ -399,9 +399,9 @@
         }
 
         .step-title {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Nunito', sans-serif;
             font-size: 24px;
-            font-weight: 500;
+            font-weight: 600;
             color: white;
             margin-bottom: 16px;
         }
@@ -457,7 +457,7 @@
         }
 
         .final-cta-title {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Quicksand', sans-serif;
             font-size: 48px;
             font-weight: 700;
             color: white;
@@ -513,7 +513,7 @@
         .footer {
             background: #000;
             padding: 60px 20px 40px;
-            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .footer-content {
@@ -521,53 +521,62 @@
             margin: 0 auto;
         }
 
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand {
+            
+        }
+
         .footer-logo {
             font-family: 'Quicksand', sans-serif;
             font-size: 28px;
             font-weight: 700;
             color: white;
-            margin-bottom: 20px;
             text-transform: uppercase;
+            margin-bottom: 20px;
         }
 
         .footer-text {
             color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 40px;
             max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
-        .footer-links {
+        .footer-links-grid {
             display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.8);
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
+            font-size: 16px;
             transition: color 0.3s;
+            display: flex;
+            align-items: center;
         }
 
-        .footer-links a:hover {
+        .footer-link:hover {
             color: #FF9800;
         }
 
-        .copyright {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 14px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 20px;
-        }
-
         .newsletter-signup {
-            margin: 40px 0;
+            
         }
 
-        .newsletter-signup h3 {
+        .newsletter-title {
             color: white;
             font-size: 18px;
             margin-bottom: 20px;
@@ -577,15 +586,12 @@
         .signup-form {
             display: flex;
             gap: 10px;
-            max-width: 400px;
-            margin: 0 auto;
             flex-wrap: wrap;
-            justify-content: center;
         }
 
         .email-input {
             flex: 1;
-            min-width: 250px;
+            min-width: 200px;
             padding: 12px 16px;
             border: none;
             border-radius: 8px;
@@ -609,10 +615,22 @@
             letter-spacing: 1px;
             cursor: pointer;
             transition: transform 0.3s;
+            text-transform: uppercase;
         }
 
         .signup-btn:hover {
             transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
         }
 
         /* Responsive */
@@ -804,6 +822,30 @@
                 gap: 15px;
                 animation: rollLeft 30s linear infinite;
             }
+
+            .footer-main {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .footer-links-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .footer-column {
+                align-items: center;
+            }
+
+            .signup-form {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .email-input {
+                min-width: 280px;
+            }
         }
 
         /* Coming Soon App Store Button Styles */
@@ -816,9 +858,9 @@
         }
 
         .coming-soon-text {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 16px;
-            font-weight: 600;
+            font-weight: 500;
             color: #666666;
             letter-spacing: 0.5px;
             margin-bottom: 5px;
@@ -870,7 +912,7 @@
             top: -15px;
             left: 50%;
             transform: translateX(-50%);
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 10px;
             font-weight: 600;
             color: #ff4444;
@@ -1034,22 +1076,35 @@
         .toast-error {
             background: linear-gradient(135deg, #f44336, #d32f2f);
         }
+        /* Scroll Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #FF9800, #FF6F00);
+            z-index: 1001;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
     </style>
     <script>
         // DOM Content Loaded
         document.addEventListener('DOMContentLoaded', function() {
             // Waitlist modal functionality
             setupWaitlistModal();
+            // Setup scroll progress bar
+            setupScrollProgress();
         });
         
         // Match button widths
         window.addEventListener('load', function() {
             const appStoreButton = document.querySelector('.app-store-btn-inactive');
-            const learnMoreButton = document.querySelector('.btn-secondary');
+            const discoverButton = document.querySelector('.btn-secondary');
             
-            if (appStoreButton && learnMoreButton) {
+            if (appStoreButton && discoverButton) {
                 const appStoreWidth = appStoreButton.offsetWidth;
-                learnMoreButton.style.width = appStoreWidth + 'px';
+                discoverButton.style.width = appStoreWidth + 'px';
             }
         });
 
@@ -1060,7 +1115,7 @@
             const closeBtn = document.querySelector('.waitlist-close');
             const form = document.getElementById('waitlistForm');
 
-            // Open modal when Join Waitlist buttons are clicked
+            // Open modal when Get Early Access buttons are clicked
             joinButtons.forEach(button => {
                 button.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -1155,6 +1210,61 @@
                 setTimeout(() => document.body.removeChild(toast), 300);
             }, 4000);
         }
+
+        // Setup scroll progress bar with dynamic colors
+        function setupScrollProgress() {
+            // Create progress bar element
+            const progressBar = document.createElement('div');
+            progressBar.className = 'progress-bar';
+            document.body.appendChild(progressBar);
+
+            // Color stops based on your website's gradient
+            const colorStops = [
+                { percent: 0, color: '#000000' },
+                { percent: 15, color: '#1A1A1A' },
+                { percent: 25, color: '#2D2D00' },
+                { percent: 35, color: '#4A4A00' },
+                { percent: 45, color: '#666600' },
+                { percent: 55, color: '#D4911A' },
+                { percent: 65, color: '#F5B532' },
+                { percent: 75, color: '#FF9800' },
+                { percent: 85, color: '#FF6F00' },
+                { percent: 95, color: '#E65100' },
+                { percent: 100, color: '#BF360C' }
+            ];
+
+            function updateProgress() {
+                const scrollTop = window.pageYOffset;
+                const docHeight = document.body.offsetHeight;
+                const winHeight = window.innerHeight;
+                const scrollPercent = Math.min(scrollTop / (docHeight - winHeight), 1);
+                const scrollPercentRounded = Math.round(scrollPercent * 100);
+                
+                // Update width
+                progressBar.style.width = scrollPercentRounded + '%';
+                
+                // Find the appropriate color based on scroll progress
+                let currentColor = colorStops[0].color;
+                let nextColor = colorStops[1].color;
+                
+                for (let i = 0; i < colorStops.length - 1; i++) {
+                    if (scrollPercentRounded >= colorStops[i].percent && scrollPercentRounded <= colorStops[i + 1].percent) {
+                        currentColor = colorStops[i].color;
+                        nextColor = colorStops[i + 1].color;
+                        break;
+                    }
+                }
+                
+                // Create gradient effect
+                progressBar.style.background = `linear-gradient(90deg, ${currentColor}, ${nextColor})`;
+            }
+
+            // Listen for scroll events
+            window.addEventListener('scroll', updateProgress);
+            
+            // Initial call
+            updateProgress();
+        }
     </script>
 </head>
 <body>
@@ -1165,7 +1275,7 @@
             <ul class="nav-links">
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="#features">Features</a></li>
-                <li><a href="#download" class="nav-download-btn">Join Waitlist</a></li>
+                <li><a href="#download" class="nav-download-btn">Get Early Access</a></li>
             </ul>
         </div>
     </nav>
@@ -1173,9 +1283,9 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <!-- <div class="hero-tagline">SELF-WORK FOR HIGH AGENCY PEOPLE</div> -->
+            <div class="hero-tagline">SCIENCE BACKED BREAKUP RECOVERY</div>
             <h1 class="hero-title">Turn Your Breakup Into Your Breakthrough</h1>
-            <p class="hero-subtitle">Turn your deepest pain into your greatest catalyst. The only platform that transforms separation trauma into accelerated personal growth through evidence-based tools, 24/7 support, and complete digital detox.</p>
+            <p class="hero-subtitle">What if your heartbreak wasn't the end of your story, but the beginning of your most powerful chapter? Some people stumble into this transformation by accident. <br>We've built something to make it inevitable.</p>
             <!-- <p class="hero-subtitle">Transform your heartbreak into growth with intelligent photo removal, AI therapy, and expert insights.</p> -->
             <div class="cta-buttons">
                 <div class="app-store-section">
@@ -1185,7 +1295,7 @@
                              alt="Download on the App Store - Coming Soon">
                     </div>
                 </div>
-                <a href="#features" class="btn-secondary">Learn More</a>
+                <a href="#features" class="btn-secondary">Discover How</a>
             </div>
         </div>
     </section>
@@ -1196,7 +1306,7 @@
             <div class="section-header">
                 <div class="section-tagline">TRANSFORMATION ACCELERATORS</div>
                 <h2 class="section-title">Turn your separation into your strongest comeback</h2>
-                <p class="section-subtitle">Five proven methods to transform breakup pain into rapid personal growth and unlock your full potential faster than ever before.</p>
+                <p class="section-subtitle">Complete digital detox that removes every trigger, 24/7 intelligent coaching that processes your emotions, breakthrough analysis that reveals your patterns, and personalized insights delivered as podcast-style content.</p>
             </div>
             
             <div class="features-grid">
@@ -1236,7 +1346,7 @@
     <section class="final-cta" id="download">
         <div class="container">
             <h2 class="final-cta-title">Ready for your breakthrough?</h2>
-            <p class="final-cta-subtitle">Join thousands who've turned their most painful separation into their strongest comeback. Transform your breakup into rocket fuel for the life you've always wanted.</p>
+            <p class="final-cta-subtitle">A select group of people have discovered something unexpected: their most devastating breakup became the catalyst for the most extraordinary year of their life. We're building this for them. And for you.</p>
             <div class="app-store-buttons">
                 <div class="app-download-container">
                     <!-- <img src="instagram-icon.jpg" alt="Detache App Icon" class="app-icon"> -->
@@ -1255,26 +1365,32 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
+            <div class="footer-main">
+                <div class="footer-brand">
             <div class="footer-logo">detache</div>
-            
-            <p class="footer-text">Transforming separation pain into breakthrough growth with evidence-based tools and expert guidance.</p>
-            <div class="footer-links">
-                <a href="privacy-policy.html">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="contact.html">Contact Us</a>
-                <a href="faq.html">FAQs</a>
-                <a href="https://www.instagram.com/detachandgrow/" target="_blank">Instagram</a>
+                    <p class="footer-text">Self Work for High Agency Folks.</p>
+                </div>
+                
+                <div class="footer-links-grid">
+                    <div class="footer-column">
+                        <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
+                        <a href="contact.html" class="footer-link">Contact Us</a>
+                        <a href="faq.html" class="footer-link">FAQs</a>
+                        <a href="https://www.instagram.com/detachandgrow/" target="_blank" class="footer-link">Instagram</a>
+                    </div>
             </div>
             
             <div class="newsletter-signup">
-                <h3>Stay updated with Detache</h3>
+                    <h3 class="newsletter-title">Stay updated with Detache</h3>
                 <div class="signup-form">
                     <input type="email" placeholder="Email address" class="email-input">
                     <button class="signup-btn">SIGN UP</button>
                 </div>
             </div>
-            <div class="copyright">
-                © 2024 Detache. All rights reserved. • Made with ❤️ for healing hearts
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">© 2024 Detache. All rights reserved. • Made with ❤️ for healing hearts</div>
             </div>
         </div>
     </footer>
@@ -1283,8 +1399,8 @@
     <div id="waitlistModal" class="waitlist-modal">
         <div class="waitlist-modal-content">
             <span class="waitlist-close">&times;</span>
-            <h2 class="waitlist-title">Join the Waitlist</h2>
-            <p class="waitlist-subtitle">Be the first to know when Detache launches and get early access to turn your breakup into your greatest breakthrough.</p>
+            <h2 class="waitlist-title">Get Early Access</h2>
+            <p class="waitlist-subtitle">Be the first to experience the science-backed breakup recovery app that transforms separation into breakthrough. Get notified the moment we launch and start your transformation journey.</p>
             <form id="waitlistForm" class="waitlist-form">
                 <input 
                     type="email" 

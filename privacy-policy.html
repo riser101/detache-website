@@ -15,21 +15,23 @@
         }
 
         body {
-            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-weight: 500;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 400;
             line-height: 1.6;
             color: white;
             background: #000;
         }
 
+        /* Scroll Progress Bar */
         .progress-bar {
             position: fixed;
             top: 0;
             left: 0;
             height: 4px;
-            background: linear-gradient(135deg, #FF9800, #FF6F00);
-            z-index: 1000;
+            background: linear-gradient(90deg, #FF9800, #FF6F00);
+            z-index: 1001;
             transition: width 0.3s ease;
+            width: 0%;
         }
 
         .nav {
@@ -39,9 +41,8 @@
             right: 0;
             z-index: 100;
             padding: 20px 40px;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 152, 0, 0.2);
         }
 
         .nav-content {
@@ -61,15 +62,41 @@
             text-transform: uppercase;
         }
 
-        .back-link {
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
             color: white;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
         }
 
-        .back-link:hover {
+        .nav-links a:hover {
             color: #FF9800;
+        }
+
+        .nav-download-btn {
+            font-family: 'Quicksand', sans-serif !important;
+            background: transparent !important;
+            border: 3px solid #FF9800 !important;
+            color: white !important;
+            padding: 10px 24px !important;
+            border-radius: 8px !important;
+            font-weight: 600 !important;
+            font-size: 16px !important;
+            letter-spacing: 1.5px !important;
+            text-transform: uppercase !important;
+            transition: all 0.3s !important;
+        }
+
+        .nav-download-btn:hover {
+            background: transparent !important;
+            color: white !important;
+            border-color: #FF9800 !important;
         }
 
         .container {
@@ -79,21 +106,23 @@
         }
 
         .page-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 48px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 36px;
             font-weight: 700;
-            color: #FF9800;
+            color: white;
             margin-bottom: 40px;
-            text-align: center;
+            text-align: left;
         }
 
         .content {
             color: rgba(255, 255, 255, 0.9);
             font-size: 16px;
             line-height: 1.8;
+            text-align: left;
         }
 
         .content h2 {
+            font-family: 'Quicksand', sans-serif;
             color: white;
             font-size: 24px;
             margin: 40px 0 20px;
@@ -101,6 +130,7 @@
         }
 
         .content h3 {
+            font-family: 'Quicksand', sans-serif;
             color: white;
             font-size: 20px;
             margin: 30px 0 15px;
@@ -120,11 +150,20 @@
             margin-bottom: 10px;
         }
 
+        .content blockquote {
+            border-left: 4px solid rgba(255, 255, 255, 0.3);
+            padding-left: 20px;
+            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 16px 20px;
+            border-radius: 8px;
+        }
+
         .effective-date {
-            color: #FF9800;
+            color: rgba(255, 255, 255, 0.7);
             font-weight: 600;
             margin-bottom: 30px;
-            text-align: center;
+            text-align: left;
         }
 
         @media (max-width: 768px) {
@@ -132,206 +171,576 @@
                 padding: 15px 20px;
             }
 
+            .nav-content {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 15px;
+            }
+            
+            .nav-links {
+                display: flex;
+                gap: 8px;
+                align-items: center;
+            }
+            
+            .nav-links li a {
+                font-size: 10px;
+                padding: 4px 4px;
+                white-space: nowrap;
+            }
+            
+            .nav-download-btn {
+                padding: 6px 12px !important;
+                font-size: 10px !important;
+                border-radius: 4px !important;
+                border-width: 1px !important;
+                white-space: nowrap;
+                letter-spacing: 0.5px !important;
+            }
+            
+            .logo {
+                font-size: 16px;
+            }
+
             .page-title {
-                font-size: 36px;
+                font-size: 28px;
             }
 
             .container {
                 padding: 100px 15px 40px;
             }
         }
+
+        /* Footer */
+        .footer {
+            background: #000;
+            padding: 60px 20px 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand {
+            
+        }
+
+        .footer-logo {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .footer-text {
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 500px;
+        }
+
+        .footer-links-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-link:hover {
+            color: #FF9800;
+        }
+
+        .newsletter-signup {
+            
+        }
+
+        .newsletter-title {
+            color: white;
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .signup-form {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .email-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 12px 16px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 14px;
+        }
+
+        .email-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .signup-btn {
+            background: linear-gradient(135deg, #FF9800, #FF6F00);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            text-transform: uppercase;
+        }
+
+        .signup-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        /* Mobile Footer Styles */
+        @media (max-width: 480px) {
+            .footer-main {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .footer-links-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .footer-column {
+                align-items: center;
+            }
+
+            .signup-form {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .email-input {
+                min-width: 280px;
+            }
+        }
     </style>
     <script>
-        window.addEventListener('scroll', function() {
+        // DOM Content Loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Setup scroll progress bar
+            setupScrollProgress();
+        });
+
+        // Setup scroll progress bar with dynamic colors
+        function setupScrollProgress() {
+            // Create progress bar element
+            const progressBar = document.createElement('div');
+            progressBar.className = 'progress-bar';
+            document.body.appendChild(progressBar);
+
+            // Color stops based on your website's gradient
+            const colorStops = [
+                { percent: 0, color: '#000000' },
+                { percent: 15, color: '#1A1A1A' },
+                { percent: 25, color: '#2D2D00' },
+                { percent: 35, color: '#4A4A00' },
+                { percent: 45, color: '#666600' },
+                { percent: 55, color: '#D4911A' },
+                { percent: 65, color: '#F5B532' },
+                { percent: 75, color: '#FF9800' },
+                { percent: 85, color: '#FF6F00' },
+                { percent: 95, color: '#E65100' },
+                { percent: 100, color: '#BF360C' }
+            ];
+
+            function updateProgress() {
             const scrollTop = window.pageYOffset;
             const docHeight = document.body.offsetHeight;
             const winHeight = window.innerHeight;
-            const scrollPercent = scrollTop / (docHeight - winHeight);
+                const scrollPercent = Math.min(scrollTop / (docHeight - winHeight), 1);
             const scrollPercentRounded = Math.round(scrollPercent * 100);
+                
+                // Update width
+                progressBar.style.width = scrollPercentRounded + '%';
+                
+                // Find the appropriate color based on scroll progress
+                let currentColor = colorStops[0].color;
+                let nextColor = colorStops[1].color;
+                
+                for (let i = 0; i < colorStops.length - 1; i++) {
+                    if (scrollPercentRounded >= colorStops[i].percent && scrollPercentRounded <= colorStops[i + 1].percent) {
+                        currentColor = colorStops[i].color;
+                        nextColor = colorStops[i + 1].color;
+                        break;
+                    }
+                }
+                
+                // Create gradient effect
+                progressBar.style.background = `linear-gradient(90deg, ${currentColor}, ${nextColor})`;
+            }
+
+            // Listen for scroll events
+            window.addEventListener('scroll', updateProgress);
             
-            document.querySelector('.progress-bar').style.width = scrollPercentRounded + '%';
-        });
+            // Initial call
+            updateProgress();
+        }
     </script>
 </head>
 <body>
-    <div class="progress-bar"></div>
-    
     <nav class="nav">
         <div class="nav-content">
             <a href="index.html" class="logo">detache</a>
-            <a href="index.html" class="back-link">← Back to Home</a>
+            <ul class="nav-links">
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="index.html#download" class="nav-download-btn">Get Early Access</a></li>
+            </ul>
         </div>
     </nav>
 
     <div class="container">
-        <h1 class="page-title">Privacy Policy</h1>
-        <div class="effective-date">Effective Date: June 27, 2025</div>
+        <h1 class="page-title">DETACHE Privacy Policy</h1>
+        <div class="effective-date">Last updated: June 27, 2025</div>
         
         <div class="content">
-            <p>At Detache, we understand that privacy is fundamental, especially when dealing with sensitive personal information during emotional recovery. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application and related services.</p>
+            <blockquote>
+                <p><strong>Need to cancel your Detache subscription?</strong> View the step-by-step instructions to cancel or request a refund.</p>
+            </blockquote>
 
-            <h2>Information We Collect</h2>
+            <h2>Welcome to Detache. Self Work for High Agency Folks.</h2>
             
-            <h3>Personal Information</h3>
+            <h3>Detache makes it easy to transform your breakup into your breakthrough to reach your potential.</h3>
+
+            <p>Maintaining the privacy of your information is of paramount importance to us as it helps foster confidence, goodwill and stronger relationships with our users. This Global Privacy Policy ("<strong>Privacy Policy</strong>") describes the privacy practices of Detache, Inc. ("<strong>Detache</strong>," "<strong>we</strong>," "<strong>us</strong>" or "<strong>our</strong>") when you use or otherwise interact with our website at <a href="https://detache.app/">https://detache.app/</a> (the "<strong>Site</strong>") and our mobile application Detache (the "<strong>App</strong>"). The App allows users to transform separation trauma into accelerated personal growth through evidence-based tools, AI therapy support, and complete digital detox features, along with offering guided support and educational content on a wide array of relevant topics. The Site and the App are referred to collectively in this Privacy Policy as the "<strong>Service.</strong>" Our privacy practices may vary among the countries in which we operate to reflect local practices and legal requirements. In this Privacy Policy, we also provide a supplementary privacy notice for California residents and a supplementary privacy notice for data subjects in the EEA, Switzerland and the UK (collectively, "<strong>Europe</strong>") and Brazil.</p>
+
+            <p>This Privacy Policy is incorporated into and forms part of our Terms of Service.</p>
+
+            <p>Before using the Service or submitting any personal information to Detache, please review this Privacy Policy carefully and contact us at support@detache.app if you have any questions.</p>
+
+            <h2>PERSONAL INFORMATION WE MAY COLLECT</h2>
+
+            <p>Here's a description of the categories of information we may collect when you interact with our Service, and examples of how we use the specific types of information.</p>
+
+            <h3>Information You Provide Us</h3>
+
             <ul>
-                <li>Account information (email address, username)</li>
-                <li>Profile information you choose to provide</li>
-                <li>Communication preferences</li>
+                <li><strong>Account data,</strong> such as your email address and password (required to create an account on our Service) and other information you may choose to provide, such as your first name, last name, phone number, and gender. If you create an account or log into the App using third-party services, such as Google or Facebook, we will receive information about you as permitted by your profile settings on the third-party service in order to authenticate you. The information we receive when you authenticate through a third-party service depends on the settings, permissions and privacy policy controlled by that third-party service. You should always check the privacy settings and notices in the relevant third-party services to understand what data may be disclosed to us or shared with our Service.</li>
+                <li><strong>Information uploaded by you on the App</strong>, such as your emotional state surveys, therapy session responses, and recovery progress data.</li>
+                <li><strong>Communications</strong> that we exchange with users when they contact us and use our support services. We also collect your information when you wish to set an e-meeting with us, to share with us your ideas about new features you would like to see on Detache or when providing us with your feedback.</li>
+                <li><strong>Payment and transactional data</strong> if you choose to sign up for a premium account with additional features and content, including name, payment card information, bank account number, billing information, and your transaction history. This information is collected by Apple (and if applicable, Google) with respect to in-app purchases made through the App. If you make a purchase for the App through our Site, our payment processor, Stripe, Inc., will collect and process your payment information. In addition to this Privacy Policy and our Terms of Service, information related to your payments or purchases is also processed according to Stripe's services agreement and privacy policy.</li>
             </ul>
 
-            <h3>Therapy and Recovery Data</h3>
+            <h3>Information We Receive From Your Use of the Service</h3>
+
             <ul>
-                <li>Conversations with our AI therapist</li>
-                <li>Session notes and insights</li>
-                <li>Progress tracking information</li>
-                <li>Emotional state data you choose to share</li>
+                <li><strong>Photo and media data</strong>, collected when you choose to use our digital detox features to remove triggering content from your device. This data is processed locally on your device and is needed to identify and remove photos, videos, and other content related to your past relationship.</li>
+                <li><strong>Therapy and recovery data</strong>, if you choose to engage with our AI therapy features and authorize the App to store this data. Each session, Detache analyzes your responses and progress to provide personalized insights and recommendations for your healing journey. Notwithstanding anything else in this Privacy Policy, (a) we use therapy and recovery data only to provide the Service and not for advertising, and (b) we will not disclose this data for advertising, marketing, or use-based data mining not needed to provide the Service.</li>
+                <li><strong>Information that we automatically collect to protect you, other App users and the public</strong>, such as IP addresses, hashed version of your password and encrypted version of your encryption key.</li>
+                <li><strong>Device data, such as your computer's or mobile device's IP address (and derived location), operating system, manufacturer and model, browser type, telecommunications provider, the date and time of App use, interactions with the Service, and the time, frequency, and duration of the interactions. We use cookies and similar technologies on the Service as further described in the "Tracking Technologies" section below.</strong></li>
             </ul>
 
-            <h3>Photo and Media Information</h3>
+            <h2>HOW WE USE PERSONAL INFORMATION</h2>
+
+            <p>We use personal information to:</p>
+
+            <p><strong>Provide our Service</strong>, including to:</p>
+
             <ul>
-                <li>Photos you choose to scan for removal (processed locally on your device)</li>
-                <li>Metadata associated with removed photos</li>
-                <li>Usage patterns of photo removal features</li>
+                <li>Operate the App, the Site and our business;</li>
+                <li>Create and maintain your account;</li>
+                <li>Process your payments and manage your subscriptions;</li>
+                <li>Maintain and improve the App, the App's features, and the Service;</li>
+                <li>Develop new products and services;</li>
+                <li>Communicate with you about the App by sending you push notifications or text messages with announcements, updates, security alerts, and support and administrative messages, if you have enabled that functionality;</li>
+                <li>Provide support for the App and Site, and respond to your requests, questions and feedback;</li>
+                <li>Prevent fraud, criminal activity, or misuses of our Service, and to ensure the security of our IT systems, architecture, and networks; and</li>
+                <li>Comply with legal obligations and legal process and to protect our rights, privacy, safety, or property, and/or that of our affiliates, you, or other third parties.</li>
             </ul>
 
-            <h3>Technical Information</h3>
+            <p><strong>Direct marketing.</strong> We may send you direct marketing communications as permitted by law, including, but not limited to, notifying you of feature releases or providing content that we think may be of interest to you. You may opt out of our email, push or text-message marketing communications as described in the "Opt out of marketing communications" section below. Please note that we may periodically send you transactional emails even after you opt out of direct marketing.</p>
+
+            <p><strong>Interest-based advertising.</strong> We may engage advertising partners, including third party advertising companies and social media companies, to display ads on the Service. These companies may use cookies and similar technologies to collect information about your interaction with the Service, our communications and other online services (as further described in the "Tracking Technologies" section below), and use that information to serve online ads that they think will interest you. This is called interest-based advertising. You can learn more about your choices for limiting interest-based advertising in the "Online tracking opt out" section below.</p>
+
+            <p><strong>Research and development.</strong> We may use your information to analyze the effectiveness of our Service, to improve and add features to our Service, and to analyze the general behavior and characteristics of users of our Service.</p>
+
+            <p><strong>Support and maintenance.</strong> We use third party analytics services to automatically log certain information about your mobile device and how you interact with the App. The information collected is used to troubleshoot and prevent errors, perform data analysis, and develop new features.</p>
+
+            <p><strong>Compliance and protection</strong>. We may use personal information to:</p>
+
             <ul>
-                <li>Device information (device type, operating system, app version)</li>
-                <li>Usage analytics (features used, session duration)</li>
-                <li>Crash reports and performance data</li>
-                <li>IP address and general location information</li>
+                <li>Protect our, your, or others' rights, privacy, safety or property (including by making and defending legal claims);</li>
+                <li>Enforce our Terms of Service;</li>
+                <li>Audit our internal processes for compliance with legal and contractual requirements and internal policies;</li>
+                <li>Prevent, identify, investigate and deter fraudulent, harmful, unauthorized, unethical or illegal activity, including cyberattacks and identity theft; and</li>
+                <li>Comply with applicable laws, lawful requests, and legal process, such as to respond to subpoenas or requests from government authorities.</li>
             </ul>
 
-            <h2>How We Use Your Information</h2>
+            <h2>HOW WE SHARE PERSONAL INFORMATION</h2>
 
-            <h3>To Provide Our Services</h3>
+            <p>We do not sell personal information. In the ordinary course of business, we may share personal information with:</p>
+
+            <p><strong>Service providers.</strong> Companies and individuals that provide services on our behalf or help us operate the Service or our business (such as payment processors, providers of subscription and billing services, analytics service providers, marketing service providers, database service providers, backup and disaster recovery service providers, email communication service providers, push notification, text message service providers).</p>
+
+            <p><strong>Professional advisors.</strong> Professional advisors, such as lawyers, bankers, auditors, and insurers, where necessary in the course of the professional services that they render to us.</p>
+
+            <p><strong>Authorities and others.</strong> Law enforcement, government authorities, and private parties, as we believe in good faith to be necessary or appropriate for the compliance and protection purposes described above.</p>
+
+            <p><strong>Business transferees.</strong> Acquirers and other relevant participants in business transactions (or negotiations of or due diligence for such transactions) involving a corporate divestiture, merger, consolidation, acquisition, reorganization, sale or other disposition of all or any portion of the business or assets of, or equity interests in, Detache or our affiliates (including, in connection with a bankruptcy or similar proceedings).</p>
+
+            <h2>TRACKING TECHNOLOGIES</h2>
+
+            <p>We use cookies, pixel tags, and other tracking technologies to collect information about your browsing activities over time and across different websites following your use of the Service and use that information to send targeted advertisements.</p>
+
+            <h3>Cookies</h3>
+
+            <p>Cookies are small data files stored on your hard drive or in your device memory. We use both session cookies (which expire once you close your web browser) and persistent cookies (which stay on your device until you delete them). To the extent we provide a cross-platform experience, we may also correlate information from cookies used on our website with actions taken in our App.</p>
+
+            <p>On the Service, we use the following types of cookies:</p>
+
             <ul>
-                <li>Deliver personalized AI therapy sessions</li>
-                <li>Generate narrative therapy insights and recommendations</li>
-                <li>Track your healing progress and patterns</li>
-                <li>Provide photo removal functionality</li>
+                <li><strong>Strictly Necessary Cookies:</strong> These cookies are necessary for our Sites to function and cannot be switched off. They are usually only set in response to actions made by you which amount to a request for services.</li>
+                <li><strong>Analytics Cookies:</strong> These cookies help us understand how visitors interact with our Sites.</li>
+                <li><strong>Marketing Cookies:</strong> These cookies are used to deliver advertising that is more relevant to you and your interests.</li>
+                <li><strong>Personalization Cookies:</strong> These cookies allow our Sites to remember choices you make and provide enhanced, more personal features.</li>
             </ul>
 
-            <h3>To Improve Our Services</h3>
+            <h3>Pixel tags</h3>
+
+            <p>Pixel tags (which are also called clear GIFs, web beacons, or pixels), are small pieces of code that can be embedded on websites and emails. Pixel tags may be used to learn how you interact with our website pages and emails, and this information helps us, and our partners provide you with a more tailored experience.</p>
+
+            <h3>Third-party analytics services</h3>
+
+            <p>We use third-party analytics services to help analyze how users use the Service. These services use cookies, scripts and other tracking technologies to collect and analyze information such as how often users visit the Service, what pages they visit, and what other sites they used prior to coming to the Service.</p>
+
+            <h3>Online tracking opt out</h3>
+
+            <p>There are a number of ways to limit online tracking, which we have summarized below:</p>
+
             <ul>
-                <li>Analyze usage patterns to enhance features</li>
-                <li>Develop new therapeutic tools and interventions</li>
-                <li>Improve AI therapy responses and accuracy</li>
-                <li>Optimize app performance and user experience</li>
+                <li><strong>Blocking cookies in your browser.</strong> Most browsers let you remove or reject cookies, including cookies used for interest-based advertising. To do this, follow the instructions in your browser settings.</li>
+                <li><strong>Blocking advertising ID use in your mobile settings.</strong> Your mobile device settings may provide functionality to limit use of the advertising ID associated with your mobile device for interest-based advertising purposes.</li>
+                <li><strong>Using privacy plug-ins or browsers.</strong> You can block our websites from setting cookies used for interest-based ads by using a browser with privacy features, like Brave, or installing browser plugins like Privacy Badger, Ghostery, or uBlock Origin, and configuring them to block third party cookies/trackers.</li>
+                <li><strong>Platform opt outs.</strong> The following advertising partners offer opt out features that let you opt out of use of your information for interest-based advertising.</li>
             </ul>
 
-            <h3>To Communicate With You</h3>
+            <p>Please note that because these opt out mechanisms are specific to the device or browser on which they are exercised, you will need to opt out on every browser and device that you use.</p>
+
+            <h2>DATA RETENTION</h2>
+
+            <p>We keep your personal information for as long as you have a Detache account. To protect the safety and security of our users, your personal information will be retained for a reasonable period of time following account deletion. To determine the appropriate retention period for your personal information, we consider the amount, nature, and sensitivity of the information, the potential risk of harm from unauthorized use or disclosure of your personal information, the purposes for which we process your personal information and whether we can achieve those purposes through other means, and the applicable legal requirements.</p>
+
+            <h2>INTERNATIONAL DATA TRANSFERS</h2>
+
+            <p>We are based in the United States and the information we collect is governed by U.S. law. By using the Service, you acknowledge that any personal information about you, regardless of whether provided by you or obtained from a third party, is being provided to us in the U.S. and will be hosted on U.S. servers, and you authorize and specifically consent to the transfer of such personal information.</p>
+
+            <h2>CHILDREN</h2>
+
+            <p>The Service is not directed to children under 18. We do not knowingly collect personal information from children under 18. If we learn that we have collected personal information of a child under 18 we will take steps to delete such information from our files as soon as possible.</p>
+
+            <h2>LINKS TO OTHER WEBSITES</h2>
+
+            <p>The Service may contain links to other websites not operated or controlled by us, including social media services ("<strong>Third Party Sites</strong>"). This Privacy Policy does not apply to Third Party Sites. While we attempt to facilitate access only to those Third Party Sites that share our respect for your privacy, we cannot take responsibility for the content, privacy policies, or practices of those Third Party Sites. We encourage you to review and understand the privacy practices of any Third Party Sites before providing any information to or through such Third Party Sites.</p>
+
+            <h2>SECURITY</h2>
+
+            <p>You use the Service at your own risk. We implement commercially reasonable technical, administrative, and organizational measures to protect personal information both online and offline from loss, misuse, and unauthorized access, disclosure, alteration, or destruction. However, no Internet or e-mail transmission is ever fully secure or error free. In particular, e-mail sent to or from us may not be secure. Therefore, you should take special care in deciding what information you send to us via the Service or e-mail. In addition, we are not responsible for circumvention of any privacy settings or security measures contained on the Service, or third party websites.</p>
+
+            <h2>YOUR CHOICES</h2>
+
+            <p>In this section, we describe the rights and choices available to all users.</p>
+
+            <h3>Access or Update Your Information</h3>
+
+            <p>If you have registered for an account with us through the Service, you may review and update certain personal information in your account profile by logging into your account.</p>
+
+            <h3>Opt out of marketing communications</h3>
+
+            <p>You may opt out of marketing-related emails by following the opt out or unsubscribe instructions at the bottom of the email, or by contacting us at support@detache.app. You may continue to receive service-related and other non-marketing emails.</p>
+
+            <p>If you receive marketing text messages from us, you may opt out of receiving further marketing text messages from us by replying STOP to our marketing message.</p>
+
+            <h3>Choosing not to share your information</h3>
+
+            <p>Where we are required by law to collect your personal information, or where we need your personal information in order to provide services to you, if you do not provide this information when requested (or you later ask to delete it), we may not be able to provide you with our services.</p>
+
+            <h3>Delete your content or close your account</h3>
+
+            <p>If you would like to delete your content or close your account, please contact us at support@detache.app</p>
+
+            <h2>OTHER SITES AND SERVICES</h2>
+
+            <p>The Service may contain links to other websites and services. These links are not an endorsement, authorization or representation that we are affiliated with that third party. We do not exercise control over third party websites or services, and are not responsible for their actions. Other websites and services follow different rules regarding the use or disclosure of the personal information you submit to them. We encourage you to read the privacy policies or statements of the other websites you visit.</p>
+
+            <h2>CHANGES TO THIS PRIVACY POLICY</h2>
+
+            <p>We reserve the right to modify this Privacy Policy at any time. If we make material changes to this Privacy Policy, we will notify you by updating the date of this Privacy Policy and posting it on the Service or other appropriate means. Any modifications to this Privacy Policy will be effective upon our posting the new terms and/or upon implementation of the changes to the Service (or as otherwise indicated at the time of posting). In all cases, your continued use of the Service after the posting of any modified Privacy Policy indicates your acceptance of the terms of the modified Privacy Policy.</p>
+
+            <h2>HOW TO CONTACT US</h2>
+
+            <p>Please contact us if you have any questions about our privacy practices or this Privacy Policy. You can reach us online at support@detache.app.</p>
+
+            <h2>NOTICE TO CALIFORNIA RESIDENTS</h2>
+
+            <p>We are providing this supplemental privacy notice to California residents pursuant to the California Consumer Privacy Act of 2018 ("<strong>CCPA</strong>").</p>
+
+            <p>The CCPA grants California residents the following rights:</p>
+
             <ul>
-                <li>Send helpful reminders and notifications</li>
-                <li>Provide customer support</li>
-                <li>Share important updates about our services</li>
-                <li>Deliver accountability features you've enabled</li>
+                <li><strong>Information.</strong> This Privacy Policy describes how we use and share your personal information through the Service, including during the past 12 months. The Policy describes:
+                    <ol>
+                        <li>The sources through which we collect California residents' personal information and the types of personal information collected in the "Personal Information We May Collect" section above.</li>
+                        <li>The purposes for which we use and share this information in the "How We Use Personal Information" section above and the "How We Share Personal Information" section above.</li>
+                    </ol>
+                </li>
+                <li><strong>Access</strong>. You can request a copy of the personal information that we maintain about you.</li>
+                <li><strong>Deletion</strong>. You can ask to delete the personal information that we maintain about you.</li>
+                <li><strong>Opt out of sale of your personal information</strong>. We do not sell personal information. We offer instructions on how to limit online tracking in the Online Tracking Opt Out.</li>
             </ul>
 
-            <h2>Photo Processing and Privacy</h2>
-            <p>Your photo privacy is paramount to us. Our photo removal feature works as follows:</p>
+            <p>The CCPA limits these rights. For example, companies may not provide users in response to access requests certain sensitive information and other consumers' personal information, and may exclude information that would compromise the confidentiality of trade secrets. The CCPA also places limits on when companies must comply with a deletion request.</p>
+
+            <p>You are entitled to exercise the rights described above free from discrimination.</p>
+
+            <p>Here is how you can submit requests:</p>
+
             <ul>
-                <li><strong>Local Processing:</strong> Photo recognition and removal processing happens locally on your device</li>
-                <li><strong>No Photo Storage:</strong> We never store, transmit, or have access to your actual photos</li>
-                <li><strong>Metadata Only:</strong> We may collect anonymous metadata about photo removal usage for feature improvement</li>
-                <li><strong>Your Control:</strong> You maintain complete control over which photos are processed and removed</li>
+                <li><strong>To request access to or deletion of personal information collected</strong>, please email us at support@detache.app or call us at (415) 840-8911.</li>
+                <li><strong>To verify your identity prior to responding to your requests</strong>, we may ask you to confirm your identity by providing us with the email address that you used to create your Detache account, or with other details that we may need to verify your identity.</li>
+                <li><strong>Authorized agents</strong>. California residents can empower an "authorized agent" to submit requests on their behalf. We will require authorized agents to confirm their identity and authority, in accordance with the CCPA.</li>
             </ul>
 
-            <h2>AI Therapy and Data Security</h2>
-            <p>Your therapy conversations are treated with the highest level of confidentiality:</p>
+            <h2>NOTICE TO EUROPEAN AND BRAZILIAN DATA SUBJECTS</h2>
+
+            <p>We are providing this supplemental privacy notice to European data subjects, pursuant to European data protection laws ("<strong>GDPR</strong>") and Brazilian data subjects, pursuant to Brazilian data protection laws ("<strong>LGPD</strong>").</p>
+
+            <p><strong>Controller and Representative.</strong> Detache is responsible for how your personal data is handled. This means we are the controller of your personal data under the GDPR. You can find our contact information in the "How to Contact Us" section above.</p>
+
+            <p><strong>Personal Data We Collect From You and How We Use It</strong>. You can read about the personal data we collect from you in the "Personal Information We May Collect" section above, and how we use it in the "How We Use Personal Information" section above.</p>
+
+            <p><strong>Justification for Data Processing</strong>. European and Brazilian data protection law sets out a list of justifications on which companies may rely to process personal data, and requires companies to explain to consumers the specific justifications for the company's data processing activities. We generally rely on one of the following justifications to process personal data:</p>
+
             <ul>
-                <li><strong>Encryption:</strong> All therapy data is encrypted both in transit and at rest</li>
-                <li><strong>Anonymization:</strong> Personal identifiers are separated from therapy content</li>
-                <li><strong>Limited Access:</strong> Only authorized personnel can access aggregated, anonymized data for service improvement</li>
-                <li><strong>No Human Review:</strong> Your individual therapy sessions are never reviewed by human staff without your explicit consent</li>
+                <li><strong>Contractual Necessity,</strong> to provide you with the Service in accordance with our Terms of Service.</li>
+                <li><strong>Legitimate Interests,</strong> where it is necessary for our legitimate business purposes, your interest or the interests of a third party.</li>
             </ul>
 
-            <h2>Information Sharing and Disclosure</h2>
-            <p>We do not sell, trade, or otherwise transfer your personal information to third parties except in the following circumstances:</p>
+            <p>Provision of some of this data is necessary to establish an account on Detache.</p>
 
-            <h3>Service Providers</h3>
-            <p>We may share information with trusted third-party service providers who assist us in operating our app, conducting our business, or serving our users, provided they agree to keep this information confidential.</p>
+            <p><strong>Account data</strong></p>
+            <p>Purpose: To create and maintain your account.</p>
+            <p>Justification for Processing Personal Data: Contractual Necessity</p>
 
-            <h3>Legal Requirements</h3>
-            <p>We may disclose your information when we believe in good faith that disclosure is necessary to:</p>
+            <p><strong>Account data</strong></p>
+            <p>Purpose: To respond to your inquiries. To send you notifications, SMS messages, or emails of feature releases or provide content that we think may be of interest to you</p>
+            <p>Justification for Processing Personal Data: <strong>Contractual Necessity. Legitimate Interests</strong>: Providing you with the support that you request, and improving our App and related Services. Sending you information on our own products and Services that may be of interest to you.</p>
+
+            <p><strong>Therapy and recovery data</strong></p>
+            <p>Purpose: To generate insights and analysis as to users' emotional healing patterns, recovery progress, and breakthrough moments.</p>
+            <p>Justification for Processing Personal Data: Contractual Necessity.</p>
+
+            <p><strong>Communications</strong></p>
+            <p>Purpose: To address users' inquiries. To improve the Service, in relation to information (such as feedback) about your experience with the Service.</p>
+            <p>Justification for Processing Personal Data: <strong>Legitimate Interests:</strong> Providing user support. Enabling us to prevent and detect harmful or unauthorized conduct. Improving and developing the App and developing new features and Services. For example, we may decide to build a new feature in response to feedback received from users.</p>
+
+            <p><strong>Payment and Transactional Data</strong></p>
+            <p>Purpose: To authorize Stripe to process your transactions.</p>
+            <p>Justification for Processing Personal Data: Contractual Necessity.</p>
+
+            <p><strong>Device Data</strong></p>
+            <p>Purpose: To provide functionality, security, and for analytics and marketing purposes.</p>
+            <p>Justification for Processing Personal Data: <strong>Legitimate Interests:</strong> Developing and improving the Service.</p>
+
+            <p><strong>Recipients of Data</strong>. We may disclose your personal data to the recipients described in the "How We Share Personal Information" section above.</p>
+
+            <p><strong>Retention of Data</strong>. We keep your personal data for as long as you have a Detache account. To protect the safety and security of our users, your personal data will be retained for a reasonable period of time following account deletion. To determine the appropriate retention period for your personal data, we consider the amount, nature, and sensitivity of the information, the potential risk of harm from unauthorized use or disclosure of your personal data, the purposes for which we process your personal data and whether we can achieve those purposes through other means, and the applicable legal requirements.</p>
+
+            <p><strong>Storage</strong>. We are based in the United States and rely on cloud storage providers that store user data on our behalf in the United States. The United States may have data protection laws less stringent than or otherwise different from the laws in effect in Europe. We have taken measures to protect the confidentiality and security of your personal data, and your rights as a data subject.</p>
+
+            <p><strong>Your Rights</strong>. The GDPR and the LGPD grant European and Brazilian data subjects the following rights:</p>
+
             <ul>
-                <li>Comply with applicable law or legal process</li>
-                <li>Protect the rights, property, or safety of Detache, our users, or others</li>
-                <li>Enforce our terms of service</li>
-                <li>Prevent fraud or security threats</li>
+                <li><strong>Access.</strong> You can request a copy of the personal data that we maintain about you. If you require additional copies, we may need to charge a reasonable fee.</li>
+                <li><strong>Deletion and Correction.</strong> You can ask us to delete or correct the personal data that we hold about you.</li>
+                <li><strong>Objection.</strong> You may have the right to object to how we use your personal data.</li>
+                <li><strong>Restrict Processing.</strong> You may ask us to suspend our processing of your personal data, for example, if you want us to establish its accuracy or the reason for processing it.</li>
+                <li><strong>Data Portability.</strong> If required to do so, we will give you your personal data in a structured, commonly used, and machine-readable format.</li>
             </ul>
 
-            <h3>Emergency Situations</h3>
-            <p>If we determine that there is an imminent risk of serious harm to you or others, we may share relevant information with emergency services or mental health professionals.</p>
-
-            <h2>Data Retention</h2>
-            <p>We retain your information only as long as necessary to provide our services and fulfill the purposes outlined in this policy:</p>
-            <ul>
-                <li><strong>Account Information:</strong> Retained until you delete your account</li>
-                <li><strong>Therapy Data:</strong> Retained for up to 7 years to support long-term progress tracking</li>
-                <li><strong>Technical Data:</strong> Typically retained for 2 years for service improvement</li>
-                <li><strong>Anonymous Analytics:</strong> May be retained indefinitely in aggregated form</li>
-            </ul>
-
-            <h2>Your Rights and Choices</h2>
-
-            <h3>Access and Control</h3>
-            <ul>
-                <li>View and download your therapy data</li>
-                <li>Update your profile and preferences</li>
-                <li>Control notification and communication settings</li>
-                <li>Request deletion of your account and associated data</li>
-            </ul>
-
-            <h3>Data Portability</h3>
-            <p>You can export your therapy insights and progress data in a portable format at any time through the app settings.</p>
-
-            <h3>Opt-Out Options</h3>
-            <ul>
-                <li>Disable analytics collection</li>
-                <li>Turn off personalized recommendations</li>
-                <li>Limit data sharing for service improvement</li>
-                <li>Opt out of marketing communications</li>
-            </ul>
-
-            <h2>Children's Privacy</h2>
-            <p>Detache is not intended for use by individuals under the age of 18. We do not knowingly collect personal information from children under 18. If we become aware that we have collected personal information from a child under 18, we will take steps to delete that information promptly.</p>
-
-            <h2>International Data Transfers</h2>
-            <p>Your information may be transferred to and processed in countries other than your country of residence. We ensure that such transfers comply with applicable data protection laws and implement appropriate safeguards to protect your information.</p>
-
-            <h2>Security Measures</h2>
-            <p>We implement industry-standard security measures to protect your information:</p>
-            <ul>
-                <li>End-to-end encryption for sensitive data</li>
-                <li>Regular security audits and penetration testing</li>
-                <li>Access controls and authentication requirements</li>
-                <li>Secure data centers with physical security measures</li>
-                <li>Employee training on data protection and privacy</li>
-            </ul>
-
-            <h2>Changes to This Privacy Policy</h2>
-            <p>We may update this Privacy Policy from time to time to reflect changes in our practices or applicable laws. We will notify you of any material changes by:</p>
-            <ul>
-                <li>Posting the updated policy in the app</li>
-                <li>Sending you an email notification</li>
-                <li>Displaying a prominent notice in the app</li>
-            </ul>
-            <p>Your continued use of the app after any changes indicates your acceptance of the updated Privacy Policy.</p>
-
-            <h2>Contact Us</h2>
-            <p>If you have any questions about this Privacy Policy or our data practices, please contact us:</p>
-            <ul>
-                <li><strong>Email:</strong> privacy@detache.app</li>
-                <li><strong>Address:</strong> Detache Privacy Team, 123 Recovery Lane, San Francisco, CA 94107</li>
-                <li><strong>Phone:</strong> 1-800-DETACHE (1-800-338-2243)</li>
-            </ul>
-
-            <p>We are committed to addressing your privacy concerns and will respond to your inquiries within 30 days.</p>
-
-            <h2>Commitment to Your Healing Journey</h2>
-            <p>At Detache, we believe that privacy and trust are essential components of healing. We are committed to maintaining the highest standards of data protection while providing you with the tools and support you need to navigate your recovery journey. Your trust is paramount, and we will continue to evolve our privacy practices to serve you better.</p>
+            <p>To exercise these rights, please email support@detache.app. You may also contact us using the contact information referenced in the "How to Contact Us" section above. You also have the right to complain to a data protection authority in your country about our processing of your personal data.</p>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="footer-logo">detache</div>
+                    <p class="footer-text">Self Work for High Agency Folks.w</p>
+                </div>
+                
+                <div class="footer-links-grid">
+                    <div class="footer-column">
+                        <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
+                        <a href="contact.html" class="footer-link">Contact Us</a>
+                        <a href="faq.html" class="footer-link">FAQs</a>
+                        <a href="https://www.instagram.com/detachandgrow/" target="_blank" class="footer-link">Instagram</a>
+                    </div>
+                </div>
+                
+                <div class="newsletter-signup">
+                    <h3 class="newsletter-title">Stay updated with Detache</h3>
+                    <div class="signup-form">
+                        <input type="email" placeholder="Email address" class="email-input">
+                        <button class="signup-btn">SIGN UP</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">© 2024 Detache. All rights reserved. • Made with ❤️ for healing hearts</div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

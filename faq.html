@@ -6,7 +6,7 @@
     <title>Detache - Frequently Asked Questions</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,8 +15,8 @@
         }
 
         body {
-            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-weight: 500;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 400;
             line-height: 1.6;
             color: white;
             background: #000;
@@ -28,9 +28,10 @@
             top: 0;
             left: 0;
             height: 4px;
-            background: linear-gradient(135deg, #FF9800, #FF6F00);
-            z-index: 1000;
+            background: linear-gradient(90deg, #FF9800, #FF6F00);
+            z-index: 1001;
             transition: width 0.3s ease;
+            width: 0%;
         }
 
         .nav {
@@ -40,9 +41,8 @@
             right: 0;
             z-index: 100;
             padding: 20px 40px;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 152, 0, 0.2);
         }
 
         .nav-content {
@@ -62,15 +62,41 @@
             text-transform: uppercase;
         }
 
-        .back-link {
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
             color: white;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
         }
 
-        .back-link:hover {
+        .nav-links a:hover {
             color: #FF9800;
+        }
+
+        .nav-download-btn {
+            font-family: 'Quicksand', sans-serif !important;
+            background: transparent !important;
+            border: 3px solid #FF9800 !important;
+            color: white !important;
+            padding: 10px 24px !important;
+            border-radius: 8px !important;
+            font-weight: 600 !important;
+            font-size: 16px !important;
+            letter-spacing: 1.5px !important;
+            text-transform: uppercase !important;
+            transition: all 0.3s !important;
+        }
+
+        .nav-download-btn:hover {
+            background: transparent !important;
+            color: white !important;
+            border-color: #FF9800 !important;
         }
 
         .container {
@@ -80,7 +106,7 @@
         }
 
         .page-title {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Quicksand', sans-serif;
             font-size: 48px;
             font-weight: 700;
             color: #FF9800;
@@ -157,27 +183,254 @@
             .coming-soon-title {
                 font-size: 28px;
             }
+
+            .nav-links {
+                gap: 8px;
+            }
+
+            .nav-links li a {
+                font-size: 10px;
+                padding: 4px 4px;
+                white-space: nowrap;
+            }
+
+            .nav-download-btn {
+                padding: 6px 12px !important;
+                font-size: 10px !important;
+                border-radius: 4px !important;
+                border-width: 1px !important;
+                white-space: nowrap;
+                letter-spacing: 0.5px !important;
+            }
+
+            .logo {
+                font-size: 16px;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background: #000;
+            padding: 60px 20px 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand {
+            
+        }
+
+        .footer-logo {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .footer-text {
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 500px;
+        }
+
+        .footer-links-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-link:hover {
+            color: #FF9800;
+        }
+
+        .newsletter-signup {
+            
+        }
+
+        .newsletter-title {
+            color: white;
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .signup-form {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .email-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 12px 16px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 14px;
+        }
+
+        .email-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .signup-btn {
+            background: linear-gradient(135deg, #FF9800, #FF6F00);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            text-transform: uppercase;
+        }
+
+        .signup-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        /* Mobile Footer Styles */
+        @media (max-width: 480px) {
+            .footer-main {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .footer-links-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .footer-column {
+                align-items: center;
+            }
+
+            .signup-form {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .email-input {
+                min-width: 280px;
+            }
         }
     </style>
     <script>
-        window.addEventListener('scroll', function() {
-            const scrollTop = window.pageYOffset;
-            const docHeight = document.body.offsetHeight;
-            const winHeight = window.innerHeight;
-            const scrollPercent = scrollTop / (docHeight - winHeight);
-            const scrollPercentRounded = Math.round(scrollPercent * 100);
-            
-            document.querySelector('.progress-bar').style.width = scrollPercentRounded + '%';
+        // DOM Content Loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Setup scroll progress bar
+            setupScrollProgress();
         });
+
+        // Setup scroll progress bar with dynamic colors
+        function setupScrollProgress() {
+            // Create progress bar element
+            const progressBar = document.createElement('div');
+            progressBar.className = 'progress-bar';
+            document.body.appendChild(progressBar);
+
+            // Color stops based on your website's gradient
+            const colorStops = [
+                { percent: 0, color: '#000000' },
+                { percent: 15, color: '#1A1A1A' },
+                { percent: 25, color: '#2D2D00' },
+                { percent: 35, color: '#4A4A00' },
+                { percent: 45, color: '#666600' },
+                { percent: 55, color: '#D4911A' },
+                { percent: 65, color: '#F5B532' },
+                { percent: 75, color: '#FF9800' },
+                { percent: 85, color: '#FF6F00' },
+                { percent: 95, color: '#E65100' },
+                { percent: 100, color: '#BF360C' }
+            ];
+
+            function updateProgress() {
+                const scrollTop = window.pageYOffset;
+                const docHeight = document.body.offsetHeight;
+                const winHeight = window.innerHeight;
+                const scrollPercent = Math.min(scrollTop / (docHeight - winHeight), 1);
+                const scrollPercentRounded = Math.round(scrollPercent * 100);
+                
+                // Update width
+                progressBar.style.width = scrollPercentRounded + '%';
+                
+                // Find the appropriate color based on scroll progress
+                let currentColor = colorStops[0].color;
+                let nextColor = colorStops[1].color;
+                
+                for (let i = 0; i < colorStops.length - 1; i++) {
+                    if (scrollPercentRounded >= colorStops[i].percent && scrollPercentRounded <= colorStops[i + 1].percent) {
+                        currentColor = colorStops[i].color;
+                        nextColor = colorStops[i + 1].color;
+                        break;
+                    }
+                }
+                
+                // Create gradient effect
+                progressBar.style.background = `linear-gradient(90deg, ${currentColor}, ${nextColor})`;
+            }
+
+            // Listen for scroll events
+            window.addEventListener('scroll', updateProgress);
+            
+            // Initial call
+            updateProgress();
+        }
     </script>
-</head>
+  </head>
 <body>
-    <div class="progress-bar"></div>
-    
     <nav class="nav">
         <div class="nav-content">
             <a href="index.html" class="logo">detache</a>
-            <a href="index.html" class="back-link">← Back to Home</a>
+            <ul class="nav-links">
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="index.html#download" class="nav-download-btn">Get Early Access</a></li>
+            </ul>
         </div>
     </nav>
 
@@ -192,5 +445,38 @@
             <a href="contact.html" class="notify-btn">Contact Us for Questions</a>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="footer-logo">detache</div>
+                    <p class="footer-text">Self Work for High Agency Folks.</p>
+                </div>
+                
+                <div class="footer-links-grid">
+                    <div class="footer-column">
+                        <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
+                        <a href="contact.html" class="footer-link">Contact Us</a>
+                        <a href="faq.html" class="footer-link">FAQs</a>
+                        <a href="https://www.instagram.com/detachandgrow/" target="_blank" class="footer-link">Instagram</a>
+                    </div>
+                </div>
+                
+                <div class="newsletter-signup">
+                    <h3 class="newsletter-title">Stay updated with Detache</h3>
+                    <div class="signup-form">
+                        <input type="email" placeholder="Email address" class="email-input">
+                        <button class="signup-btn">SIGN UP</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">© 2024 Detache. All rights reserved. • Made with ❤️ for healing hearts</div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
