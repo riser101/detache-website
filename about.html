@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detache - About Us</title>
-    <link rel="icon" type="image/jpeg" href="instagram-icon.jpg">
+    <title>About Detache - The Team Behind Your Transformation</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -21,393 +20,174 @@
             line-height: 1.6;
             color: white;
             background: #000;
-            padding-top: 80px; /* Account for fixed navigation */
+        }
+
+        /* Scroll Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #FF9800, #FF6F00);
+            z-index: 1001;
+            transition: width 0.3s ease;
+            width: 0%;
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 60px 20px;
-        }
-
-        .hero-section {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
-        .page-title {
-            font-family: 'Quicksand', sans-serif;
-            font-size: 48px;
-            font-weight: 700;
-            color: #FF9800;
-            margin-bottom: 20px;
-        }
-
-        .page-subtitle {
-            font-size: 24px;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 40px;
-        }
-
-        .app-showcase {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            justify-content: center;
-            margin-bottom: 60px;
-            flex-wrap: wrap;
-        }
-
-        .app-icon {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, #FF9800, #FF6F00);
-            border-radius: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 48px;
-            color: white;
-            font-weight: 800;
-        }
-
-        .download-section {
-            text-align: center;
-        }
-
-        .download-text {
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 20px;
-            font-size: 18px;
-        }
-
-        .app-store-btn {
-            background: transparent;
-            border: none;
-            color: white;
-            padding: 0;
-            border-radius: 0;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 16px;
-        }
-
-        .app-store-btn:hover {
-            background: transparent;
-            border: none;
-            transform: translateY(-2px);
+            padding: 120px 20px 60px;
         }
 
         .content-section {
+            margin-bottom: 80px;
+        }
+
+        .hero-section {
             margin-bottom: 60px;
         }
 
-        .section-title {
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-image {
+            flex-shrink: 0;
+        }
+
+        .hero-title {
             font-family: 'Quicksand', sans-serif;
-            font-size: 32px;
+            font-size: 36px;
             font-weight: 700;
             color: white;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
+            line-height: 1.3;
         }
 
-        .section-content {
-            color: rgba(255, 255, 255, 0.8);
+        .hero-description {
             font-size: 18px;
-            line-height: 1.8;
-            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+            margin-bottom: 24px;
         }
 
-        .mission-box {
-            background: linear-gradient(135deg, rgba(255, 152, 0, 0.1), rgba(255, 111, 0, 0.05));
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 40px 0;
+        .hero-description:last-child {
+            margin-bottom: 0;
         }
 
-        .mission-quote {
-            font-size: 24px;
-            font-style: italic;
-            color: #FF9800;
-            text-align: center;
-            line-height: 1.4;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-        }
-
-        .stat {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .stat-number {
-            font-size: 36px;
-            font-weight: 900;
-            color: #FF9800;
-            margin-bottom: 8px;
-        }
-
-        .stat-label {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 16px;
-            font-weight: 500;
-        }
-
-        .feature-highlight {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 30px;
-            margin: 30px 0;
-        }
-
-        .feature-highlight h3 {
-            color: #FF9800;
-            font-size: 20px;
-            margin-bottom: 15px;
-        }
-
-        .team-section {
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             margin: 60px 0;
         }
 
-        .team-intro {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .team-values {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-        }
-
-        .value-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 30px;
-            text-align: center;
-        }
-
-        .value-icon {
-            font-size: 32px;
-            margin-bottom: 16px;
-        }
-
-        .value-title {
+        .section-header {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
             color: white;
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 12px;
+            margin: 40px 0 20px 0;
         }
 
-        .value-description {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 14px;
-        }
-
-        /* Coming Soon Badge and Inactive Button Styles */
-        .app-store-btn-inactive {
-            display: inline-block;
-            opacity: 0.5;
-            filter: grayscale(60%);
-            cursor: not-allowed;
-            transition: opacity 0.3s ease;
-            position: relative;
-        }
-
-        .app-store-btn-inactive:hover {
-            opacity: 0.6;
-        }
-
-        .coming-soon-badge {
-            position: absolute;
-            top: -13px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            font-size: 9px;
-            font-weight: 600;
-            color: #ff4444;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 2px 6px;
-            border-radius: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-            z-index: 10;
-        }
-
-        /* Waitlist Modal Styles */
-        .waitlist-modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(5px);
-        }
-
-        .waitlist-modal-content {
-            background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
-            margin: 10% auto;
-            padding: 40px;
-            border: 1px solid rgba(255, 152, 0, 0.3);
-            border-radius: 20px;
-            width: 90%;
-            max-width: 500px;
-            position: relative;
-            text-align: center;
-        }
-
-        .waitlist-close {
-            color: rgba(255, 255, 255, 0.6);
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            position: absolute;
-            right: 20px;
-            top: 15px;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .waitlist-close:hover {
-            color: #FF9800;
-        }
-
-        .waitlist-title {
-            color: #FF9800;
-            font-size: 28px;
-            font-weight: 800;
-            margin-bottom: 10px;
-        }
-
-        .waitlist-subtitle {
+        .content-section p {
             color: rgba(255, 255, 255, 0.8);
             font-size: 16px;
-            margin-bottom: 30px;
-            line-height: 1.5;
+            line-height: 1.7;
+            margin-bottom: 20px;
         }
 
-        .waitlist-form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .waitlist-input {
-            padding: 16px 20px;
-            border: 2px solid rgba(255, 152, 0, 0.3);
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.05);
+        .content-section p strong {
             color: white;
-            font-size: 16px;
-            font-family: inherit;
-            transition: border-color 0.3s;
-        }
-
-        .waitlist-input:focus {
-            outline: none;
-            border-color: #FF9800;
-        }
-
-        .waitlist-input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        .waitlist-submit {
-            background: linear-gradient(135deg, #FF9800, #FF6F00);
-            color: white;
-            padding: 16px 32px;
-            border: none;
-            border-radius: 12px;
-            font-size: 18px;
             font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .waitlist-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(255, 152, 0, 0.3);
+        .team-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
         }
 
-        .waitlist-submit:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
+        .team-list li {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
         }
 
-        /* Toast Notification */
-        .toast {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, #4CAF50, #45a049);
+        .team-list li:before {
+            content: "•";
             color: white;
-            padding: 16px 24px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            z-index: 1001;
-            opacity: 0;
-            transform: translateX(100%);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .team-list li a {
+            display: inline-block;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+            padding-bottom: 2px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+
+        .instagram-link {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .instagram-link:hover {
+            transform: scale(1.05);
+        }
+
+        .instagram-icon {
+            width: 140px;
+            height: 140px;
+            border-radius: 24px;
             transition: all 0.3s ease;
         }
 
-        .toast.show {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .toast-error {
-            background: linear-gradient(135deg, #f44336, #d32f2f);
+        .instagram-icon:hover {
+            box-shadow: 0 15px 40px rgba(255, 152, 0, 0.3);
         }
 
         @media (max-width: 768px) {
-            body {
-                padding-top: 70px; /* Adjust for smaller mobile nav */
-            }
-            
-            .container {
-                padding: 40px 15px;
-            }
-
-            .app-showcase {
+            .hero-content {
                 flex-direction: column;
-                gap: 20px;
+                gap: 40px;
+                text-align: center;
             }
 
-            .app-icon {
+            .hero-title {
+                font-size: 28px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 100px 15px 40px;
+            }
+
+            .section-header {
+                font-size: 22px;
+            }
+
+            .section-divider {
+                margin: 40px 0;
+            }
+
+            .instagram-icon {
                 width: 100px;
                 height: 100px;
-                font-size: 36px;
-            }
-
-            .mission-box {
-                padding: 30px 20px;
-            }
-
-            .mission-quote {
-                font-size: 20px;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
             }
         }
 
@@ -429,10 +209,6 @@
             gap: 60px;
             align-items: start;
             margin-bottom: 40px;
-        }
-
-        .footer-brand {
-            
         }
 
         .footer-logo {
@@ -466,16 +242,10 @@
             text-decoration: none;
             font-size: 16px;
             transition: color 0.3s;
-            display: flex;
-            align-items: center;
         }
 
         .footer-link:hover {
             color: #FF9800;
-        }
-
-        .newsletter-signup {
-            
         }
 
         .newsletter-title {
@@ -535,17 +305,11 @@
             font-size: 14px;
         }
 
-        /* Mobile Footer Styles */
         @media (max-width: 480px) {
             .footer-main {
                 grid-template-columns: 1fr;
                 gap: 40px;
                 text-align: center;
-            }
-
-            .footer-links-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
             }
 
             .footer-column {
@@ -562,237 +326,94 @@
             }
         }
     </style>
+    <script src="shared-nav.js"></script>
     <script>
-        // Waitlist Modal Setup
         document.addEventListener('DOMContentLoaded', function() {
-            setupWaitlistModal();
+            setupSharedNavigation();
+            setupScrollProgress();
         });
 
-        function setupWaitlistModal() {
-            const modal = document.getElementById('waitlistModal');
-            const joinButtons = document.querySelectorAll('.app-store-btn');
-            const closeBtn = document.querySelector('.waitlist-close');
-            const form = document.getElementById('waitlistForm');
+        function setupScrollProgress() {
+            const progressBar = document.createElement('div');
+            progressBar.className = 'progress-bar';
+            document.body.appendChild(progressBar);
 
-            // Open modal when App Store buttons are clicked
-            joinButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    modal.style.display = 'block';
-                });
-            });
+            const colorStops = [
+                { percent: 0, color: '#000000' },
+                { percent: 25, color: '#2D2D00' },
+                { percent: 50, color: '#666600' },
+                { percent: 75, color: '#FF9800' },
+                { percent: 100, color: '#BF360C' }
+            ];
 
-            // Close modal when X is clicked
-            closeBtn.addEventListener('click', function() {
-                modal.style.display = 'none';
-                form.reset();
-            });
-
-            // Close modal when clicking outside
-            window.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    modal.style.display = 'none';
-                    form.reset();
+            function updateProgress() {
+                const scrollTop = window.pageYOffset;
+                const docHeight = document.body.offsetHeight;
+                const winHeight = window.innerHeight;
+                const scrollPercent = Math.min(scrollTop / (docHeight - winHeight), 1);
+                const scrollPercentRounded = Math.round(scrollPercent * 100);
+                
+                progressBar.style.width = scrollPercentRounded + '%';
+                
+                let currentColor = colorStops[0].color;
+                let nextColor = colorStops[1].color;
+                
+                for (let i = 0; i < colorStops.length - 1; i++) {
+                    if (scrollPercentRounded >= colorStops[i].percent && scrollPercentRounded <= colorStops[i + 1].percent) {
+                        currentColor = colorStops[i].color;
+                        nextColor = colorStops[i + 1].color;
+                        break;
+                    }
                 }
-            });
-
-            // Handle form submission
-            form.addEventListener('submit', handleWaitlistSubmit);
-        }
-
-        // Handle waitlist form submission
-        async function handleWaitlistSubmit(e) {
-            e.preventDefault();
-            
-            const submitBtn = document.getElementById('waitlistSubmit');
-            const emailInput = document.getElementById('waitlistEmail');
-            const email = emailInput.value.trim();
-
-            if (!email || !isValidEmail(email)) {
-                showToast('Please enter a valid email address', 'error');
-                return;
+                
+                progressBar.style.background = `linear-gradient(90deg, ${currentColor}, ${nextColor})`;
             }
 
-            // Disable submit button
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Joining...';
-
-            try {
-                // Replace this URL with your Google Apps Script Web App URL
-                const response = await fetch('https://script.google.com/macros/s/AKfycbxegkSDydos3PV1FqUf6iVw1vfaA7RVc3ulZhp2VB4srdweArVvCUeiSMlzMQqdyDr32A/exec', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        email: email,
-                        timestamp: new Date().toISOString(),
-                        source: 'about-page'
-                    }),
-                    mode: 'no-cors'
-                });
-
-                showToast('🎉 Successfully joined the waitlist!');
-                document.getElementById('waitlistModal').style.display = 'none';
-                document.getElementById('waitlistForm').reset();
-
-            } catch (error) {
-                console.error('Error:', error);
-                showToast('Something went wrong. Please try again.', 'error');
-            } finally {
-                // Re-enable submit button
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Join Waitlist';
-            }
-        }
-
-        // Email validation
-        function isValidEmail(email) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(email);
-        }
-
-        // Show toast notification
-        function showToast(message, type = 'success') {
-            const toast = document.createElement('div');
-            toast.className = `toast ${type === 'error' ? 'toast-error' : ''}`;
-            toast.textContent = message;
-            
-            document.body.appendChild(toast);
-            
-            // Trigger animation
-            setTimeout(() => toast.classList.add('show'), 100);
-            
-            // Remove toast after 4 seconds
-            setTimeout(() => {
-                toast.classList.remove('show');
-                setTimeout(() => document.body.removeChild(toast), 300);
-            }, 4000);
+            window.addEventListener('scroll', updateProgress);
+            updateProgress();
         }
     </script>
-    <script src="shared-nav.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="hero-section">
-            <h1 class="page-title">About Detache</h1>
-            <p class="page-subtitle">Empowering your healing journey with compassionate technology</p>
+    <div id="navigation-container"></div>
+
+        <div class="container">
+        <section class="content-section">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <div class="hero-image">
+                        <a href="https://www.instagram.com/detache.science/" target="_blank" class="instagram-link">
+                            <img src="instagram-icon.jpg" alt="Follow Detache on Instagram" class="instagram-icon">
+                        </a>
+                    </div>
+                    <div class="hero-text">
+                        <h1 class="hero-title">Turn Your Breakup Into Your Breakthrough</h1>
+                        <p class="hero-description">Separation has the power to make or break your future. But it's not just about healing. Breakup gives you clarity, which is the driver behind everything you want to achieve. With the right tools, your pain becomes purpose, your rejection becomes direction, and your life transforms.</p>
+                        
+                        <p class="hero-description">That's why at Detache, we don't just focus on getting over someone. We focus on ways you can harness separation energy and channel it into becoming the person you've always wanted to be, so you can reach your potential each day.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <h2 class="section-header">About Us</h2>
             
-            <div class="app-showcase">
-                <div class="app-icon">
-                    <img src="instagram-icon.jpg" alt="Detache App Icon" style="width: 100%; height: 100%; border-radius: 24px; object-fit: cover;">
-                </div>
-                <div class="download-section">
-                    <p class="download-text">Transform your separation into growth</p>
-                    <a href="#" class="app-store-btn">
-                        <div class="app-store-btn-inactive">
-                            <span class="coming-soon-badge">Coming Soon</span>
-                            <img src="Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" alt="Download on the App Store - Coming Soon" style="height: 60px; width: auto;">
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
+            <p>Detache is built with three pillars to help people navigate separations and realize their bold vision of themselves—their true potential. This can only be achieved with rigorous science-backed self work, and only pain and rejection pushes us to take that hard look at ourselves and go on this hero's journey. Human potential is one of a kind. We empower and reignite it during separations.</p>
 
-        <div class="mission-box">
-            <div class="mission-quote">
-                "We believe that separation, while painful, can be a catalyst for profound personal growth and self-discovery."
-            </div>
-        </div>
+            <div class="section-divider"></div>
 
-        <div class="content-section">
-            <h2 class="section-title">Our Mission</h2>
-            <p class="section-content">
-                At Detache, we're revolutionizing how people navigate relationship endings and emotional recovery. We understand that breakups are among life's most challenging experiences, often leaving people feeling lost, overwhelmed, and unsure of how to move forward.
-            </p>
-            <p class="section-content">
-                Our mission is to transform the healing process by combining evidence-based therapeutic approaches with cutting-edge AI technology. We provide tools that not only help you process emotions and gain insights but also actively support your journey toward emotional freedom and personal growth.
-            </p>
-        </div>
-
-        <div class="content-section">
-            <h2 class="section-title">What Makes Us Different</h2>
-            <p class="section-content">
-                Traditional approaches to breakup recovery often leave people waiting weeks for therapy appointments or relying on generic self-help resources. Detache bridges this gap by providing immediate, personalized support when you need it most.
-            </p>
+            <h2 class="section-header">The Team</h2>
             
-            <div class="feature-highlight">
-                <h3>🤖 AI-Powered Therapy</h3>
-                <p>Our AI therapist is available 24/7, trained specifically in breakup recovery techniques and equipped with the latest therapeutic methodologies to provide compassionate, intelligent support.</p>
-            </div>
+            <p>Detache is built by a team of engineers, neuroscientists, and growth experts who understand both the technical challenges of building world-class software and the human challenges of emotional transformation. Our founder brings 10+ years of startup engineering experience with veterans from Oracle Cloud Infrastructure, IIT graduates, and MIT-trained researchers with multiple patents in systems technology. Our approach is grounded in decades of neuroscience research and clinical psychology expertise specialized in trauma recovery and attachment theory.</p>
 
-            <div class="feature-highlight">
-                <h3>📱 Instant Digital Detox</h3>
-                <p>Our one-click photo removal tool uses advanced AI recognition to help you create a clean digital environment, removing triggers that can hinder your healing process.</p>
-            </div>
-
-            <div class="feature-highlight">
-                <h3>📊 Data-Driven Insights</h3>
-                <p>Track your emotional patterns, understand your healing journey, and receive personalized recommendations based on your unique recovery process.</p>
-            </div>
-
-            <div class="feature-highlight">
-                <h3>🎧 Narrative Therapy Innovation</h3>
-                <p>Listen to AI experts discuss your therapy sessions in podcast format, providing new perspectives and insights to accelerate your healing.</p>
-            </div>
-        </div>
-
-        <div class="team-section">
-            <div class="team-intro">
-                <h2 class="section-title">Our Approach</h2>
-                <p class="section-content">
-                    Detache is built on the foundation that healing should be accessible, private, and empowering. We combine clinical psychology research with modern technology to create an experience that feels both professional and personal.
-                </p>
-            </div>
-
-            <div class="team-values">
-                <div class="value-card">
-                    <div class="value-icon">🔒</div>
-                    <div class="value-title">Privacy First</div>
-                    <div class="value-description">Your healing journey is deeply personal. We ensure complete privacy and security in every interaction.</div>
-                </div>
-
-                <div class="value-card">
-                    <div class="value-icon">🌱</div>
-                    <div class="value-title">Growth Mindset</div>
-                    <div class="value-description">We believe every ending is a new beginning. Our tools help you discover strength you didn't know you had.</div>
-                </div>
-
-                <div class="value-card">
-                    <div class="value-icon">🔬</div>
-                    <div class="value-title">Evidence-Based</div>
-                    <div class="value-description">Every feature is grounded in psychological research and therapeutic best practices for emotional recovery.</div>
-                </div>
-
-                <div class="value-card">
-                    <div class="value-icon">⚡</div>
-                    <div class="value-title">Immediate Support</div>
-                    <div class="value-description">When you're in pain, waiting isn't an option. Get support the moment you need it, not weeks later.</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="content-section">
-            <h2 class="section-title">Our Commitment to You</h2>
-            <p class="section-content">
-                We understand that trusting an app with your most vulnerable moments is a big decision. That's why we've designed Detache with the utmost care for your emotional wellbeing and privacy.
-            </p>
-            <p class="section-content">
-                Our team includes licensed therapists, AI researchers, and people who have walked the path of separation themselves. We're not just building technology; we're creating a companion for one of life's most challenging journeys.
-            </p>
-            <p class="section-content">
-                Join thousands of people who have chosen to transform their separation into growth. Your healing journey starts with a single step, and we're here to walk alongside you every step of the way.
-            </p>
-        </div>
-
-        <div style="text-align: center; margin: 60px 0;">
-            <a href="#" class="app-store-btn">
-                <div class="app-store-btn-inactive">
-                    <span class="coming-soon-badge">Coming Soon</span>
-                    <img src="Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" alt="Start Your Healing Journey Today - Download on the App Store - Coming Soon" style="height: 60px; width: auto;">
-                </div>
-            </a>
-        </div>
+            <p><strong>Meet our team:</strong></p>
+            <ul class="team-list">
+                <li><a href="https://www.linkedin.com/in/iamyousufsyed/" target="_blank">Yousuf Syed, Detache Founder & CEO</a></li>
+                <li><a href="https://www.linkedin.com/in/seantrue/" target="_blank">Sean True, MIT Graduate & Technology Innovation Advisor</a></li>
+                <li>Linda Maria, PhD, Clinical Psychology Expert & Trauma Recovery Specialist</li>
+            </ul>
+        </section>
     </div>
 
     <!-- Footer -->
@@ -806,10 +427,11 @@
                 
                 <div class="footer-links-grid">
                     <div class="footer-column">
+                        <a href="about.html" class="footer-link">About Us</a>
                         <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
                         <a href="contact.html" class="footer-link">Contact Us</a>
                         <a href="faq.html" class="footer-link">FAQs</a>
-                        <a href="https://www.instagram.com/detachandgrow/" target="_blank" class="footer-link">Instagram</a>
+                        <a href="https://www.instagram.com/detache.science/" target="_blank" class="footer-link">Instagram</a>
                     </div>
                 </div>
                 
@@ -823,30 +445,9 @@
             </div>
             
             <div class="footer-bottom">
-                <div class="copyright">© 2024 Detache. All rights reserved. • Made with ❤️ for healing hearts</div>
+                <div class="copyright">© 2024 Detache. All rights reserved. • Made with ❤️ for high-agency folks.</div>
             </div>
         </div>
     </footer>
-
-    <!-- Waitlist Modal -->
-    <div id="waitlistModal" class="waitlist-modal">
-        <div class="waitlist-modal-content">
-            <span class="waitlist-close">&times;</span>
-            <h2 class="waitlist-title">Join the Waitlist</h2>
-            <p class="waitlist-subtitle">Be the first to know when Detache launches and get early access to transform your separation into growth.</p>
-            <form id="waitlistForm" class="waitlist-form">
-                <input 
-                    type="email" 
-                    id="waitlistEmail" 
-                    class="waitlist-input" 
-                    placeholder="Enter your email address" 
-                    required
-                >
-                <button type="submit" id="waitlistSubmit" class="waitlist-submit">
-                    Join Waitlist
-                </button>
-            </form>
-        </div>
-    </div>
 </body>
 </html>

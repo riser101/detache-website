@@ -445,9 +445,22 @@
     <script>
         // DOM Content Loaded
         document.addEventListener('DOMContentLoaded', function() {
+            // Load footer component
+            loadFooter();
             // Setup scroll progress bar
             setupScrollProgress();
         });
+
+        // Load footer component
+        async function loadFooter() {
+            try {
+                const response = await fetch('footer.html');
+                const footerHtml = await response.text();
+                document.getElementById('footer-placeholder').innerHTML = footerHtml;
+            } catch (error) {
+                console.error('Error loading footer:', error);
+            }
+        }
 
         // Setup scroll progress bar with dynamic colors
         function setupScrollProgress() {
@@ -587,52 +600,39 @@
                 <button type="submit" class="submit-btn">Submit Request</button>
             </form>
         </div>
-
-        <div class="contact-info">
-            <h3>Other Ways to Reach Us</h3>
-            <div class="contact-item">
-                <strong>Email:</strong> support@detache.app
-            </div>
-            <div class="contact-item">
-                <strong>Response Time:</strong> Within 24 hours
-            </div>
-            <div class="contact-item">
-                <strong>Emergency Support:</strong> Available 24/7 through the app
-            </div>
-        </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-main">
-                <div class="footer-brand">
-                    <div class="footer-logo">detache</div>
-                    <p class="footer-text">Self Work for High Agency Folks.</p>
-                </div>
-                
-                <div class="footer-links-grid">
-                    <div class="footer-column">
-                        <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
-                        <a href="contact.html" class="footer-link">Contact Us</a>
-                        <a href="faq.html" class="footer-link">FAQs</a>
-                        <a href="https://www.instagram.com/detachandgrow/" target="_blank" class="footer-link">Instagram</a>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <div class="footer-brand">
+                        <div class="footer-logo">detache</div>
+                        <p class="footer-text">Self Work for High Agency Folks.w</p>
+                    </div>
+                    
+                    <div class="footer-links-grid">
+                        <div class="footer-column">
+                            <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
+                            <a href="contact.html" class="footer-link">Contact Us</a>
+                            <a href="faq.html" class="footer-link">FAQs</a>
+                            <a href="https://www.instagram.com/detache.science/" target="_blank" class="footer-link">Instagram</a>
+                        </div>
+                    </div>
+                    
+                    <div class="newsletter-signup">
+                        <h3 class="newsletter-title">Stay updated with Detache</h3>
+                        <div class="signup-form">
+                            <input type="email" placeholder="Email address" class="email-input">
+                            <button class="signup-btn">SIGN UP</button>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="newsletter-signup">
-                    <h3 class="newsletter-title">Stay updated with Detache</h3>
-                    <div class="signup-form">
-                        <input type="email" placeholder="Email address" class="email-input">
-                        <button class="signup-btn">SIGN UP</button>
-                    </div>
+                <div class="footer-bottom">
+                    <div class="copyright">© 2024 Detache. All rights reserved. • Made with ❤️ for healing hearts</div>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <div class="copyright">© 2024 Detache. All rights reserved. • Made with ❤️ for healing hearts</div>
-            </div>
-        </div>
-    </footer>
+        </footer>
 </body>
 </html>

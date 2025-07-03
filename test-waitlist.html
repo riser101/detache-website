@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waitlist Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-form {
+            margin: 20px 0;
+        }
+        .test-input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .test-button {
+            background: #007bff;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .test-button:hover {
+            background: #0056b3;
+        }
+        .test-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .test-result {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background: #e2e3e5;
+            color: #383d41;
+            border: 1px solid #d6d8db;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Detache Waitlist Test</h1>
+        <p>Use this page to test the waitlist functionality and debug any issues.</p>
+        
+        <div class="test-form">
+            <h3>Test Waitlist Submission</h3>
+            <input type="email" id="testEmail" class="test-input" placeholder="Enter test email" value="test@example.com">
+            <br>
+            <button id="testSubmit" class="test-button">Test Submission</button>
+            <button id="testAPI" class="test-button">Test API Health</button>
+        </div>
+        
+        <div id="testResult" class="test-result info">Ready to test...</div>
+    </div>
+
+    <script>
+        const API_URL = 'https://script.google.com/macros/s/AKfycbwNuouI4vsE46rXSZ3nMrrQY1nf9-RMBO7SMFAEfywup3DQ0cj8SeunR1XM2JVDS4bgyQ/exec';
+        
+        function log(message, type = 'info') {
+            const resultDiv = document.getElementById('testResult');
+            const timestamp = new Date().toLocaleTimeString();
+            resultDiv.className = `test-result ${type}`;
+            resultDiv.textContent = `[${timestamp}] ${message}`;
+            console.log(message);
+        }
+
+        async function testAPIHealth() {
+            log('Testing API health...', 'info');
+            
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'GET'
+                });
+                
+                log(`GET Response Status: ${response.status}`, 'info');
+                
+                if (response.ok) {œ
+                    const data = await response.json();
+                    log(`GET Success: ${JSON.stringify(data, null, 2)}`, 'success');
+                } else {
+                    log(`GET Failed: ${response.statusText}`, 'error');
+                }
+            } catch (error) {
+                log(`GET Error: ${error.message}`, 'error');
+            }
+        }
+
+        async function testWaitlistSubmission() {
+            const email = document.getElementById('testEmail').value;
+            const submitBtn = document.getElementById('testSubmit');
+            
+            if (!email) {
+                log('Please enter an email address', 'error');
+                return;
+            }
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Testing...';
+            
+            log(`Testing submission for: ${email}`, 'info');
+            
+            try {
+                const payload = {
+                    email: email,
+                    timestamp: new Date().toISOString(),
+                    source: 'test-page'
+                };
+                
+                log(`Sending payload: ${JSON.stringify(payload, null, 2)}`, 'info');
+                
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(payload)
+                });
+                
+                log(`Response Status: ${response.status}`, 'info');
+                log(`Response Headers: ${JSON.stringify(Object.fromEntries(response.headers.entries()), null, 2)}`, 'info');
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const result = await response.json();
+                log(`Response Data: ${JSON.stringify(result, null, 2)}`, result.success ? 'success' : 'error');
+                
+            } catch (error) {
+                log(`Error: ${error.message}\nStack: ${error.stack}`, 'error');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Test Submission';
+            }
+        }
+
+        // Event listeners
+        document.getElementById('testSubmit').addEventListener('click', testWaitlistSubmission);
+        document.getElementById('testAPI').addEventListener('click', testAPIHealth);
+        
+        // Auto-test API health on page load
+        window.addEventListener('load', () => {
+            setTimeout(testAPIHealth, 1000);
+        });
+    </script>
+</body>
+</html> 

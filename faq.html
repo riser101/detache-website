@@ -6,7 +6,7 @@
     <title>Detache - Frequently Asked Questions</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -20,9 +20,9 @@
             line-height: 1.6;
             color: white;
             background: #000;
-            min-height: 100vh;
         }
 
+        /* Scroll Progress Bar */
         .progress-bar {
             position: fixed;
             top: 0;
@@ -34,71 +34,6 @@
             width: 0%;
         }
 
-        .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            padding: 20px 40px;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(20px);
-        }
-
-        .nav-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Quicksand', sans-serif;
-            font-size: 24px;
-            font-weight: 700;
-            color: white;
-            text-decoration: none;
-            text-transform: uppercase;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #FF9800;
-        }
-
-        .nav-download-btn {
-            font-family: 'Quicksand', sans-serif !important;
-            background: transparent !important;
-            border: 3px solid #FF9800 !important;
-            color: white !important;
-            padding: 10px 24px !important;
-            border-radius: 8px !important;
-            font-weight: 600 !important;
-            font-size: 16px !important;
-            letter-spacing: 1.5px !important;
-            text-transform: uppercase !important;
-            transition: all 0.3s !important;
-        }
-
-        .nav-download-btn:hover {
-            background: transparent !important;
-            color: white !important;
-            border-color: #FF9800 !important;
-        }
-
         .container {
             max-width: 800px;
             margin: 0 auto;
@@ -107,108 +42,118 @@
 
         .page-title {
             font-family: 'Quicksand', sans-serif;
-            font-size: 48px;
+            font-size: 36px;
             font-weight: 700;
-            color: #FF9800;
+            color: white;
             margin-bottom: 20px;
-            text-align: center;
+            text-align: left;
         }
 
         .page-subtitle {
-            font-size: 20px;
             color: rgba(255, 255, 255, 0.7);
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .coming-soon {
-            text-align: center;
-            padding: 100px 20px;
-        }
-
-        .coming-soon-icon {
-            font-size: 80px;
-            margin-bottom: 30px;
-        }
-
-        .coming-soon-title {
-            font-size: 32px;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 20px;
-        }
-
-        .coming-soon-text {
             font-size: 18px;
-            color: rgba(255, 255, 255, 0.7);
-            max-width: 500px;
-            margin: 0 auto 40px;
+            margin-bottom: 50px;
+            text-align: left;
         }
 
-        .notify-btn {
-            background: linear-gradient(135deg, #FF9800, #FF6F00);
-            color: white;
-            padding: 16px 32px;
-            border: none;
+        .faq-item {
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: transform 0.3s;
-            display: inline-block;
-            cursor: pointer;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.02);
         }
 
-        .notify-btn:hover {
-            transform: translateY(-2px);
+        .faq-question {
+            font-family: 'Quicksand', sans-serif;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px 25px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
+            transition: all 0.3s ease;
+            border: none;
+            width: 100%;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 152, 0, 0.1);
+            color: #FF9800;
+        }
+
+        .faq-question.active {
+            background: rgba(255, 152, 0, 0.15);
+            color: #FF9800;
+        }
+
+        .faq-toggle {
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-answer.active {
+            padding: 20px 25px;
+            max-height: 500px;
+        }
+
+        .faq-answer p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .faq-answer ul {
+            color: rgba(255, 255, 255, 0.9);
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+
+        .faq-answer li {
+            margin-bottom: 8px;
+        }
+
+        .highlight {
+            color: #FF9800;
+            font-weight: 600;
         }
 
         @media (max-width: 768px) {
-            .nav {
-                padding: 15px 20px;
-            }
-
             .page-title {
-                font-size: 36px;
+                font-size: 28px;
             }
 
             .container {
                 padding: 100px 15px 40px;
             }
 
-            .coming-soon-icon {
-                font-size: 60px;
-            }
-
-            .coming-soon-title {
-                font-size: 28px;
-            }
-
-            .nav-links {
-                gap: 8px;
-            }
-
-            .nav-links li a {
-                font-size: 10px;
-                padding: 4px 4px;
-                white-space: nowrap;
-            }
-
-            .nav-download-btn {
-                padding: 6px 12px !important;
-                font-size: 10px !important;
-                border-radius: 4px !important;
-                border-width: 1px !important;
-                white-space: nowrap;
-                letter-spacing: 0.5px !important;
-            }
-
-            .logo {
+            .faq-question {
                 font-size: 16px;
+                padding: 15px 20px;
+            }
+
+            .faq-answer.active {
+                padding: 15px 20px;
             }
         }
 
-        /* Footer */
+        /* Footer Styles */
         .footer {
             background: #000;
             padding: 60px 20px 40px;
@@ -226,10 +171,6 @@
             gap: 60px;
             align-items: start;
             margin-bottom: 40px;
-        }
-
-        .footer-brand {
-            
         }
 
         .footer-logo {
@@ -263,16 +204,10 @@
             text-decoration: none;
             font-size: 16px;
             transition: color 0.3s;
-            display: flex;
-            align-items: center;
         }
 
         .footer-link:hover {
             color: #FF9800;
-        }
-
-        .newsletter-signup {
-            
         }
 
         .newsletter-title {
@@ -332,17 +267,11 @@
             font-size: 14px;
         }
 
-        /* Mobile Footer Styles */
         @media (max-width: 480px) {
             .footer-main {
                 grid-template-columns: 1fr;
                 gap: 40px;
                 text-align: center;
-            }
-
-            .footer-links-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
             }
 
             .footer-column {
@@ -359,46 +288,48 @@
             }
         }
     </style>
+    <script src="shared-nav.js"></script>
     <script>
-        // DOM Content Loaded
         document.addEventListener('DOMContentLoaded', function() {
-            // Setup scroll progress bar
+            setupSharedNavigation();
+            loadFooter();
             setupScrollProgress();
+            setupFAQ();
         });
 
-        // Setup scroll progress bar with dynamic colors
+        // Load footer component
+        async function loadFooter() {
+            try {
+                const response = await fetch('footer.html');
+                const footerHtml = await response.text();
+                document.getElementById('footer-placeholder').innerHTML = footerHtml;
+            } catch (error) {
+                console.error('Error loading footer:', error);
+            }
+        }
+
         function setupScrollProgress() {
-            // Create progress bar element
             const progressBar = document.createElement('div');
             progressBar.className = 'progress-bar';
             document.body.appendChild(progressBar);
 
-            // Color stops based on your website's gradient
             const colorStops = [
                 { percent: 0, color: '#000000' },
-                { percent: 15, color: '#1A1A1A' },
                 { percent: 25, color: '#2D2D00' },
-                { percent: 35, color: '#4A4A00' },
-                { percent: 45, color: '#666600' },
-                { percent: 55, color: '#D4911A' },
-                { percent: 65, color: '#F5B532' },
+                { percent: 50, color: '#666600' },
                 { percent: 75, color: '#FF9800' },
-                { percent: 85, color: '#FF6F00' },
-                { percent: 95, color: '#E65100' },
                 { percent: 100, color: '#BF360C' }
             ];
 
             function updateProgress() {
-                const scrollTop = window.pageYOffset;
-                const docHeight = document.body.offsetHeight;
-                const winHeight = window.innerHeight;
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.offsetHeight;
+            const winHeight = window.innerHeight;
                 const scrollPercent = Math.min(scrollTop / (docHeight - winHeight), 1);
-                const scrollPercentRounded = Math.round(scrollPercent * 100);
+            const scrollPercentRounded = Math.round(scrollPercent * 100);
                 
-                // Update width
                 progressBar.style.width = scrollPercentRounded + '%';
                 
-                // Find the appropriate color based on scroll progress
                 let currentColor = colorStops[0].color;
                 let nextColor = colorStops[1].color;
                 
@@ -410,73 +341,265 @@
                     }
                 }
                 
-                // Create gradient effect
                 progressBar.style.background = `linear-gradient(90deg, ${currentColor}, ${nextColor})`;
             }
 
-            // Listen for scroll events
             window.addEventListener('scroll', updateProgress);
-            
-            // Initial call
             updateProgress();
         }
+
+        function setupFAQ() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    const isActive = question.classList.contains('active');
+                    
+                    // Close all other FAQ items
+                    faqQuestions.forEach(q => {
+                        q.classList.remove('active');
+                        q.nextElementSibling.classList.remove('active');
+                    });
+                    
+                    // Toggle current item if it wasn't active
+                    if (!isActive) {
+                        question.classList.add('active');
+                        answer.classList.add('active');
+                    }
+                });
+            });
+        }
     </script>
-  </head>
+</head>
 <body>
-    <nav class="nav">
-        <div class="nav-content">
-            <a href="index.html" class="logo">detache</a>
-            <ul class="nav-links">
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="index.html#features">Features</a></li>
-                <li><a href="index.html#download" class="nav-download-btn">Get Early Access</a></li>
-            </ul>
-        </div>
-    </nav>
+    <div id="navigation-container"></div>
 
     <div class="container">
         <h1 class="page-title">Frequently Asked Questions</h1>
-        <p class="page-subtitle">Get answers to common questions about healing with Detache</p>
+        <p class="page-subtitle">Everything you need to know about transforming your breakup into your breakthrough</p>
         
-        <div class="coming-soon">
-            <div class="coming-soon-icon">❓</div>
-            <h2 class="coming-soon-title">FAQs Coming Soon</h2>
-            <p class="coming-soon-text">We're working on compiling the most helpful answers to support your healing journey. Check back soon for comprehensive FAQs about using Detache.</p>
-            <a href="contact.html" class="notify-btn">Contact Us for Questions</a>
+        <div class="faq-item">
+            <button class="faq-question">
+                What makes Detache different from other breakup recovery apps?
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>Detache isn't just about healing—it's about <span class="highlight">using your breakup as rocket fuel for accelerated personal growth</span>. While other apps focus on "getting over" someone, we help you transform separation trauma into the catalyst for becoming your best self.</p>
+                <p>Our science-backed approach combines:</p>
+                <ul>
+                    <li><strong>AI-powered pattern analysis:</strong> Identifies your specific attachment patterns and growth opportunities</li>
+                    <li><strong>Complete digital detox tools:</strong> Breaks toxic connection cycles by intelligently removing triggers</li>
+                    <li><strong>Personalized breakthrough podcasts:</strong> Custom content based on your relationship history and goals</li>
+                    <li><strong>Momentum tracking:</strong> Shows your transformation in real-time with science-based metrics</li>
+                    <li><strong>Neuroscience-based approach:</strong> Developed with PhD-level expertise in brain science and trauma recovery</li>
+                </ul>
+                <p>Most people take 2-3 years to truly recover from a significant breakup. Our users report major breakthroughs within 90 days because we're not just helping you heal—we're helping you <span class="highlight">become someone who attracts better relationships and opportunities</span>.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                Why should I pay for photo archival when my iPhone does it for free?
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>Your iPhone stores photos—Detache <span class="highlight">strategically removes triggers while preserving memories</span>. There's a crucial difference.</p>
+                <p>Our AI doesn't just hide photos randomly. It:</p>
+                <ul>
+                    <li><strong>Identifies specific triggers:</strong> Photos, videos, and content that keep you stuck in trauma loops</li>
+                    <li><strong>Preserves important memories:</strong> Family events, achievements, and meaningful moments stay accessible</li>
+                    <li><strong>Gradual re-introduction:</strong> As you heal, we intelligently bring back content when you're ready</li>
+                    <li><strong>Context awareness:</strong> Removes not just photos of your ex, but places, friends, and situations that trigger setbacks</li>
+                </ul>
+                <p>Think of it as a <span class="highlight">digital decluttering specialist</span> who knows exactly what helps vs. hurts your recovery. Your iPhone's "Hide" feature is like putting a band-aid on a wound—our system is like having a surgeon who knows exactly what to remove for optimal healing.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                Why pay for AI therapy when free chatbots exist?
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>Free chatbots give generic responses. Detache's AI is <span class="highlight">specifically trained on breakup recovery and personal transformation</span> with thousands of hours of specialized data.</p>
+                <p>Here's what makes our AI different:</p>
+                <ul>
+                    <li><strong>Specialized training:</strong> Trained on attachment theory, trauma recovery, and growth psychology</li>
+                    <li><strong>Personalized insights:</strong> Learns your patterns, triggers, and progress over time</li>
+                    <li><strong>Actionable guidance:</strong> Doesn't just listen—provides specific steps for your next breakthrough</li>
+                    <li><strong>Crisis support:</strong> Recognizes when you're spiraling and provides immediate, effective interventions</li>
+                    <li><strong>Privacy-first:</strong> Your conversations stay private and aren't used to train other models</li>
+                </ul>
+                <p>ChatGPT might say "I'm sorry you're going through this." Our AI says "Based on your attachment style and current progress, here's the specific cognitive pattern keeping you stuck, and here's how to break it in the next 48 hours."</p>
+                <p>It's the difference between talking to a well-meaning friend and working with a specialist who's helped thousands of people transform their breakups into breakthroughs.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                How quickly will I see results?
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>Most users report their first breakthrough within <span class="highlight">7-14 days</span>, with major transformation happening within 90 days.</p>
+                <p>Here's what our typical user journey looks like:</p>
+                <ul>
+                    <li><strong>Week 1:</strong> Immediate relief from digital triggers and urges to check their social media</li>
+                    <li><strong>Week 2-4:</strong> Clarity on relationship patterns and personal growth areas</li>
+                    <li><strong>Month 2:</strong> Noticeable improvement in confidence, energy, and life direction</li>
+                    <li><strong>Month 3:</strong> Major breakthrough in personal goals, relationships, or career</li>
+                </ul>
+                <p>Remember: we're not just helping you "get over" someone—we're helping you become someone new. The timeline depends on your commitment to the process, but our users consistently report faster progress than traditional therapy or self-help approaches.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                Is this a replacement for therapy?
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>Detache is <span class="highlight">complementary to therapy, not a replacement</span>. Think of us as your daily growth companion between therapy sessions.</p>
+                <p>We work great alongside therapy because:</p>
+                <ul>
+                    <li>We provide 24/7 support when your therapist isn't available</li>
+                    <li>We help you implement insights from therapy sessions</li>
+                    <li>We track your progress and patterns to discuss with your therapist</li>
+                    <li>We focus specifically on breakup recovery and growth acceleration</li>
+                </ul>
+                <p>Many therapists aren't specialized in breakup recovery or don't understand the specific challenges of modern dating, social media triggers, and digital detox. We fill that gap with specialized tools and support.</p>
+                <p>If you're in crisis or dealing with severe depression, please seek professional help immediately. We're here to amplify good mental health, not replace professional care when it's needed.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                What if I'm not ready to "get over" my ex yet?
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>Perfect. We're not asking you to "get over" anyone. We're asking: <span class="highlight">"What if this pain could become your greatest source of power?"</span></p>
+                <p>Detache works with where you are, not where you think you should be:</p>
+                <ul>
+                    <li>We don't rush you to "move on"</li>
+                    <li>We help you understand WHY you're not ready (and that's okay)</li>
+                    <li>We transform the energy you're spending on them into energy for yourself</li>
+                    <li>We show you how to honor your feelings while still growing</li>
+                </ul>
+                <p>Many of our most successful users started the program still deeply in love with their ex. The magic happens when you realize that <span class="highlight">loving them can coexist with becoming your best self</span>.</p>
+                <p>You don't have to choose between honoring your feelings and transforming your life. We show you how to do both.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                How much does Detache cost?
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>Detache offers flexible pricing to fit your needs:</p>
+                <ul>
+                    <li><strong>Monthly:</strong> $29.99/month</li>
+                    <li><strong>Annual:</strong> $199.99/year (save 44%)</li>
+                    <li><strong>Lifetime:</strong> $399.99 (pay once, transform forever)</li>
+                </ul>
+                <p>Compare this to:</p>
+                <ul>
+                    <li>Traditional therapy: $100-200+ per session</li>
+                    <li>Relationship coaching: $300-500+ per month</li>
+                    <li>Self-help books and courses: $50-200+ each</li>
+                </ul>
+                <p><span class="highlight">Most users save thousands compared to traditional alternatives</span> while getting specialized, 24/7 support designed specifically for breakup recovery and personal growth.</p>
+                <p>Plus, we offer a 7-day free trial and 30-day money-back guarantee. If you don't see meaningful progress, we'll refund your investment completely.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                Is my data private and secure?
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>Absolutely. Your privacy is paramount, especially when dealing with sensitive emotional content.</p>
+                <p>Our security measures include:</p>
+                <ul>
+                    <li><strong>End-to-end encryption:</strong> Your conversations and data are encrypted at rest and in transit</li>
+                    <li><strong>Local processing:</strong> Photo analysis happens on your device, not our servers</li>
+                    <li><strong>No data selling:</strong> We never sell your personal information to third parties</li>
+                    <li><strong>Minimal data collection:</strong> We only collect what's necessary to provide the service</li>
+                    <li><strong>Anonymous analytics:</strong> Any usage data is completely anonymized</li>
+                </ul>
+                <p>You can delete your account and all associated data at any time. We're committed to transparency about how your data is used—check our <span class="highlight">Privacy Policy</span> for complete details.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                What devices and platforms are supported?
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>Detache is available on:</p>
+                <ul>
+                    <li><strong>iOS:</strong> iPhone and iPad (iOS 14.0+)</li>
+                    <li><strong>Android:</strong> Android phones and tablets (Android 8.0+)</li>
+                    <li><strong>Web:</strong> Chrome, Safari, Firefox, and Edge browsers</li>
+                </ul>
+                <p>Your progress syncs seamlessly across all devices, so you can access your growth journey anywhere. Some features like photo analysis work best on mobile devices where your photos are stored.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                Can I cancel my subscription anytime?
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>Yes, you can cancel your subscription at any time with no penalties or fees.</p>
+                <p>Cancellation details:</p>
+                <ul>
+                    <li>Cancel through your account settings or contact support@detache.app</li>
+                    <li>You'll continue to have access until your current billing period ends</li>
+                    <li>Your data stays safe for 90 days in case you want to return</li>
+                    <li>No questions asked, no hassles</li>
+                </ul>
+                <p>We're confident in the value we provide, but we understand that different approaches work for different people. If Detache isn't right for you, we want you to find what is.</p>
+            </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-main">
-                <div class="footer-brand">
-                    <div class="footer-logo">detache</div>
-                    <p class="footer-text">Self Work for High Agency Folks.</p>
-                </div>
-                
-                <div class="footer-links-grid">
-                    <div class="footer-column">
-                        <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
-                        <a href="contact.html" class="footer-link">Contact Us</a>
-                        <a href="faq.html" class="footer-link">FAQs</a>
-                        <a href="https://www.instagram.com/detachandgrow/" target="_blank" class="footer-link">Instagram</a>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <div class="footer-brand">
+                        <div class="footer-logo">detache</div>
+                        <p class="footer-text">Self Work for High Agency Folks.w</p>
+                    </div>
+                    
+                    <div class="footer-links-grid">
+                        <div class="footer-column">
+                            <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
+                            <a href="contact.html" class="footer-link">Contact Us</a>
+                            <a href="faq.html" class="footer-link">FAQs</a>
+                            <a href="https://www.instagram.com/detache.science/" target="_blank" class="footer-link">Instagram</a>
+                        </div>
+                    </div>
+                    
+                    <div class="newsletter-signup">
+                        <h3 class="newsletter-title">Stay updated with Detache</h3>
+                        <div class="signup-form">
+                            <input type="email" placeholder="Email address" class="email-input">
+                            <button class="signup-btn">SIGN UP</button>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="newsletter-signup">
-                    <h3 class="newsletter-title">Stay updated with Detache</h3>
-                    <div class="signup-form">
-                        <input type="email" placeholder="Email address" class="email-input">
-                        <button class="signup-btn">SIGN UP</button>
-                    </div>
+                <div class="footer-bottom">
+                    <div class="copyright">© 2024 Detache. All rights reserved. • Made with ❤️ for healing hearts</div>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <div class="copyright">© 2024 Detache. All rights reserved. • Made with ❤️ for healing hearts</div>
-            </div>
-        </div>
-    </footer>
+        </footer>
 </body>
 </html>
