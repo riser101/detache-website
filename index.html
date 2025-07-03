@@ -1324,43 +1324,8 @@
             try {
                 console.log('Submitting email:', email);
                 
-                // Try POST request first
-                let response;
-                try {
-                    response = await fetch('https://script.google.com/macros/s/AKfycbzc55BvwifnEEbVdL35xbNO5CvFALNMMyjDvLCqHwbzbmJd0pI_wglruOtanJnYqLJgCw/exec', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            email: email,
-                            timestamp: new Date().toISOString(),
-                            source: 'website'
-                        })
-                    });
-                } catch (corsError) {
-                    console.log('POST failed, trying GET fallback:', corsError);
-                    
-                    // Fallback: Use GET with URL parameters
-                    const params = new URLSearchParams({
-                        email: email,
-                        timestamp: new Date().toISOString(),
-                        source: 'website',
-                        action: 'submit'
-                    });
-                    
-                    response = await fetch(`https://script.google.com/macros/s/AKfycbzc55BvwifnEEbVdL35xbNO5CvFALNMMyjDvLCqHwbzbmJd0pI_wglruOtanJnYqLJgCw/exec?${params}`, {
-                        method: 'GET'
-                    });
-                }
-
-                console.log('Response status:', response.status);
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-
-                const result = await response.json();
+                // Use CORS-free script method
+                const result = await submitViaScript(email, 'website');
                 console.log('Response data:', result);
 
                 if (result.success) {
@@ -1411,48 +1376,13 @@
             try {
                 console.log('Submitting footer email:', email);
                 
-                // Try POST request first
-                let response;
-                try {
-                    response = await fetch('https://script.google.com/macros/s/AKfycbzc55BvwifnEEbVdL35xbNO5CvFALNMMyjDvLCqHwbzbmJd0pI_wglruOtanJnYqLJgCw/exec', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            email: email,
-                            timestamp: new Date().toISOString(),
-                            source: 'footer-signup'
-                        })
-                    });
-                } catch (corsError) {
-                    console.log('Footer POST failed, trying GET fallback:', corsError);
-                    
-                    // Fallback: Use GET with URL parameters
-                    const params = new URLSearchParams({
-                        email: email,
-                        timestamp: new Date().toISOString(),
-                        source: 'footer-signup',
-                        action: 'submit'
-                    });
-                    
-                    response = await fetch(`https://script.google.com/macros/s/AKfycbzc55BvwifnEEbVdL35xbNO5CvFALNMMyjDvLCqHwbzbmJd0pI_wglruOtanJnYqLJgCw/exec?${params}`, {
-                        method: 'GET'
-                    });
-                }
-
-                console.log('Footer signup response status:', response.status);
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-
-                const result = await response.json();
+                // Use CORS-free script method
+                const result = await submitViaScript(email, 'footer-signup');
                 console.log('Footer signup response data:', result);
 
                 if (result.success) {
                     showToast('🎉 Successfully joined the waitlist!');
-                    form.reset();
+                    e.target.reset();
                 } else {
                     showToast(result.message || 'Something went wrong. Please try again.', 'error');
                 }
@@ -1465,6 +1395,58 @@
                 submitBtn.disabled = false;
                 submitBtn.textContent = originalText;
             }
+        }
+
+        // CORS-free submission using dynamic script tag (JSONP-style)
+        function submitViaScript(email, source) {
+            return new Promise((resolve, reject) => {
+                // Create unique callback name
+                const callbackName = 'waitlistCallback_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+                
+                // Set up global callback
+                window[callbackName] = function(result) {
+                    // Clean up
+                    delete window[callbackName];
+                    if (document.body.contains(script)) {
+                        document.body.removeChild(script);
+                    }
+                    
+                    resolve(result);
+                };
+                
+                // Set up error handling
+                const timeout = setTimeout(() => {
+                    delete window[callbackName];
+                    if (document.body.contains(script)) {
+                        document.body.removeChild(script);
+                    }
+                    reject(new Error('Request timeout'));
+                }, 10000); // 10 second timeout
+                
+                // Create script tag with parameters
+                const script = document.createElement('script');
+                const params = new URLSearchParams({
+                    email: email,
+                    timestamp: new Date().toISOString(),
+                    source: source,
+                    action: 'submit',
+                    callback: callbackName
+                });
+                
+                script.src = `https://script.google.com/macros/s/AKfycbxz24CBwzVTWU6eEgHVXRJLbj69uHVwhChsjRdCDx7i5jfPjFQpH4aABbHtYwkEEm4Vag/exec?${params}`;
+                
+                script.onerror = function() {
+                    clearTimeout(timeout);
+                    delete window[callbackName];
+                    if (document.body.contains(script)) {
+                        document.body.removeChild(script);
+                    }
+                    reject(new Error('Script load failed'));
+                };
+                
+                // Append script to trigger request
+                document.body.appendChild(script);
+            });
         }
 
         // Email validation
