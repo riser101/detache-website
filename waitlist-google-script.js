@@ -2,8 +2,13 @@
 // Copy this code to Google Apps Script (script.google.com)
 // Deploy as a web app and replace the URL in index.html
 
-// Handle GET requests (for health checks)
+// Handle both GET and POST requests
 function doGet(e) {
+  // Check if this is an OPTIONS request (CORS preflight)
+  if (e.parameter && e.parameter.method === 'OPTIONS') {
+    return handleCORS();
+  }
+  
   return createResponse({
     success: true,
     message: 'Detache Waitlist API is running',
@@ -108,6 +113,19 @@ function doPost(e) {
   }
 }
 
+// Handle CORS preflight requests
+function handleCORS() {
+  return ContentService
+    .createTextOutput('')
+    .setMimeType(ContentService.MimeType.TEXT)
+    .setHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
+      'Access-Control-Max-Age': '86400'
+    });
+}
+
 // Unified response creator with proper CORS headers
 function createResponse(data, statusCode = 200) {
   return ContentService
@@ -120,7 +138,7 @@ function createResponse(data, statusCode = 200) {
     .setHeaders({
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
       'Access-Control-Max-Age': '86400'
     });
 }

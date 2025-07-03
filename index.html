@@ -1324,19 +1324,35 @@
             try {
                 console.log('Submitting email:', email);
                 
-                // Replace this URL with your Google Apps Script Web App URL
-                const response = await fetch('https://script.google.com/macros/s/AKfycbwNuouI4vsE46rXSZ3nMrrQY1nf9-RMBO7SMFAEfywup3DQ0cj8SeunR1XM2JVDS4bgyQ/exec', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
+                // Try POST request first
+                let response;
+                try {
+                    response = await fetch('https://script.google.com/macros/s/AKfycbyFo0mA-Yg549rAm_OORuTMcLOklN_whSbieQ-By8EhyDNsGMaSa-F-IJM5rM4HYAXxQA/exec', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            email: email,
+                            timestamp: new Date().toISOString(),
+                            source: 'website'
+                        })
+                    });
+                } catch (corsError) {
+                    console.log('POST failed, trying GET fallback:', corsError);
+                    
+                    // Fallback: Use GET with URL parameters
+                    const params = new URLSearchParams({
                         email: email,
                         timestamp: new Date().toISOString(),
-                        source: 'website'
-                    })
-                    // Removed mode: 'no-cors' to allow reading response
-                });
+                        source: 'website',
+                        action: 'submit'
+                    });
+                    
+                    response = await fetch(`https://script.google.com/macros/s/AKfycbyFo0mA-Yg549rAm_OORuTMcLOklN_whSbieQ-By8EhyDNsGMaSa-F-IJM5rM4HYAXxQA/exec?${params}`, {
+                        method: 'GET'
+                    });
+                }
 
                 console.log('Response status:', response.status);
                 
@@ -1357,13 +1373,7 @@
 
             } catch (error) {
                 console.error('Error details:', error);
-                
-                // Check if it's a CORS error
-                if (error.message.includes('CORS') || error.message.includes('fetch')) {
-                    showToast('Connection error. Please check your internet connection.', 'error');
-                } else {
-                    showToast('Something went wrong. Please try again.', 'error');
-                }
+                showToast('Something went wrong. Please try again.', 'error');
             } finally {
                 // Re-enable submit button
                 submitBtn.disabled = false;
@@ -1401,17 +1411,35 @@
             try {
                 console.log('Submitting footer email:', email);
                 
-                const response = await fetch('https://script.google.com/macros/s/AKfycbwNuouI4vsE46rXSZ3nMrrQY1nf9-RMBO7SMFAEfywup3DQ0cj8SeunR1XM2JVDS4bgyQ/exec', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
+                // Try POST request first
+                let response;
+                try {
+                    response = await fetch('https://script.google.com/macros/s/AKfycbyFo0mA-Yg549rAm_OORuTMcLOklN_whSbieQ-By8EhyDNsGMaSa-F-IJM5rM4HYAXxQA/exec', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            email: email,
+                            timestamp: new Date().toISOString(),
+                            source: 'footer-signup'
+                        })
+                    });
+                } catch (corsError) {
+                    console.log('Footer POST failed, trying GET fallback:', corsError);
+                    
+                    // Fallback: Use GET with URL parameters
+                    const params = new URLSearchParams({
                         email: email,
                         timestamp: new Date().toISOString(),
-                        source: 'footer-signup'
-                    })
-                });
+                        source: 'footer-signup',
+                        action: 'submit'
+                    });
+                    
+                    response = await fetch(`https://script.google.com/macros/s/AKfycbyFo0mA-Yg549rAm_OORuTMcLOklN_whSbieQ-By8EhyDNsGMaSa-F-IJM5rM4HYAXxQA/exec?${params}`, {
+                        method: 'GET'
+                    });
+                }
 
                 console.log('Footer signup response status:', response.status);
                 
@@ -1431,12 +1459,7 @@
 
             } catch (error) {
                 console.error('Footer signup error details:', error);
-                
-                if (error.message.includes('CORS') || error.message.includes('fetch')) {
-                    showToast('Connection error. Please check your internet connection.', 'error');
-                } else {
-                    showToast('Something went wrong. Please try again.', 'error');
-                }
+                showToast('Something went wrong. Please try again.', 'error');
             } finally {
                 // Re-enable submit button
                 submitBtn.disabled = false;
