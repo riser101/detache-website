@@ -1249,7 +1249,7 @@
         // DOM Content Loaded
         document.addEventListener('DOMContentLoaded', function() {
             // Load footer component
-            loadFooter();
+            // Footer loaded inline (no external file needed)
             // Waitlist modal functionality
             setupWaitlistModal();
             // Footer signup functionality
@@ -1305,7 +1305,7 @@
         }
 
         // Handle waitlist form submission
-        async function handleWaitlistSubmit(e) {
+        function handleWaitlistSubmit(e) {
             e.preventDefault();
             
             const submitBtn = document.getElementById('waitlistSubmit');
@@ -1317,33 +1317,13 @@
                 return;
             }
 
-            // Disable submit button
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Joining...';
-
-            try {
-                console.log('Submitting email:', email);
-                
-                // Use CORS-free script method
-                const result = await submitViaScript(email, 'website');
-                console.log('Response data:', result);
-
-                if (result.success) {
-                    showToast('🎉 Successfully joined the waitlist!');
-                    document.getElementById('waitlistModal').style.display = 'none';
-                    document.getElementById('waitlistForm').reset();
-                } else {
-                    showToast(result.message || 'Something went wrong. Please try again.', 'error');
-                }
-
-            } catch (error) {
-                console.error('Error details:', error);
-                showToast('Something went wrong. Please try again.', 'error');
-            } finally {
-                // Re-enable submit button
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Get Early Access';
-            }
+            // Show success message immediately
+            showToast('🎉 Successfully joined the waitlist!');
+            document.getElementById('waitlistModal').style.display = 'none';
+            document.getElementById('waitlistForm').reset();
+            
+            // Submit form in background using hidden iframe
+            submitToGoogleForm(email, 'website');
         }
 
         // Footer Signup Setup
@@ -1356,10 +1336,9 @@
         }
 
         // Handle footer signup form submission
-        async function handleFooterSignup(e) {
+        function handleFooterSignup(e) {
             e.preventDefault();
             
-            const submitBtn = document.getElementById('footerSignupBtn');
             const emailInput = document.getElementById('footerEmail');
             const email = emailInput.value.trim();
 
@@ -1368,85 +1347,58 @@
                 return;
             }
 
-            // Disable submit button
-            submitBtn.disabled = true;
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'JOINING...';
-
-            try {
-                console.log('Submitting footer email:', email);
-                
-                // Use CORS-free script method
-                const result = await submitViaScript(email, 'footer-signup');
-                console.log('Footer signup response data:', result);
-
-                if (result.success) {
-                    showToast('🎉 Successfully joined the waitlist!');
-                    e.target.reset();
-                } else {
-                    showToast(result.message || 'Something went wrong. Please try again.', 'error');
-                }
-
-            } catch (error) {
-                console.error('Footer signup error details:', error);
-                showToast('Something went wrong. Please try again.', 'error');
-            } finally {
-                // Re-enable submit button
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
-            }
+            // Show success message immediately
+            showToast('🎉 Successfully joined the waitlist!');
+            e.target.reset();
+            
+            // Submit form in background
+            submitToGoogleForm(email, 'footer-signup');
         }
 
-        // CORS-free submission using dynamic script tag (JSONP-style)
-        function submitViaScript(email, source) {
-            return new Promise((resolve, reject) => {
-                // Create unique callback name
-                const callbackName = 'waitlistCallback_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-                
-                // Set up global callback
-                window[callbackName] = function(result) {
-                    // Clean up
-                    delete window[callbackName];
-                    if (document.body.contains(script)) {
-                        document.body.removeChild(script);
-                    }
-                    
-                    resolve(result);
-                };
-                
-                // Set up error handling
-                const timeout = setTimeout(() => {
-                    delete window[callbackName];
-                    if (document.body.contains(script)) {
-                        document.body.removeChild(script);
-                    }
-                    reject(new Error('Request timeout'));
-                }, 10000); // 10 second timeout
-                
-                // Create script tag with parameters
-                const script = document.createElement('script');
-                const params = new URLSearchParams({
-                    email: email,
-                    timestamp: new Date().toISOString(),
-                    source: source,
-                    action: 'submit',
-                    callback: callbackName
-                });
-                
-                script.src = `https://script.google.com/macros/s/AKfycbxz24CBwzVTWU6eEgHVXRJLbj69uHVwhChsjRdCDx7i5jfPjFQpH4aABbHtYwkEEm4Vag/exec?${params}`;
-                
-                script.onerror = function() {
-                    clearTimeout(timeout);
-                    delete window[callbackName];
-                    if (document.body.contains(script)) {
-                        document.body.removeChild(script);
-                    }
-                    reject(new Error('Script load failed'));
-                };
-                
-                // Append script to trigger request
-                document.body.appendChild(script);
-            });
+        // Super simple form submission using hidden iframe
+        function submitToGoogleForm(email, source) {
+            console.log('Submitting email:', email);
+            
+            // Create hidden iframe
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.name = 'hiddenFrame';
+            document.body.appendChild(iframe);
+            
+            // Create form
+            const form = document.createElement('form');
+            form.method = 'GET';
+            form.target = 'hiddenFrame';
+            form.action = 'https://script.google.com/macros/s/AKfycbxsYlqcybZIdmM2CpoV8vP3j8mEQ4iD13mRB_cCcZk7qRsBIMjZRevP0XWiVBGPyGn91Q/exec';
+            
+            // Add form fields
+            const emailField = document.createElement('input');
+            emailField.type = 'hidden';
+            emailField.name = 'email';
+            emailField.value = email;
+            form.appendChild(emailField);
+            
+            const sourceField = document.createElement('input');
+            sourceField.type = 'hidden';
+            sourceField.name = 'source';
+            sourceField.value = source;
+            form.appendChild(sourceField);
+            
+            const timestampField = document.createElement('input');
+            timestampField.type = 'hidden';
+            timestampField.name = 'timestamp';
+            timestampField.value = new Date().toISOString();
+            form.appendChild(timestampField);
+            
+            // Submit form
+            document.body.appendChild(form);
+            form.submit();
+            
+            // Clean up after 2 seconds
+            setTimeout(() => {
+                if (document.body.contains(form)) document.body.removeChild(form);
+                if (document.body.contains(iframe)) document.body.removeChild(iframe);
+            }, 2000);
         }
 
         // Email validation
@@ -1553,16 +1505,7 @@
             });
         }
 
-        // Load footer component
-        async function loadFooter() {
-            try {
-                const response = await fetch('footer.html');
-                const footerHtml = await response.text();
-                document.getElementById('footer-placeholder').innerHTML = footerHtml;
-            } catch (error) {
-                console.error('Error loading footer:', error);
-            }
-        }
+        // Footer functionality is handled by setupFooterSignup() above
     </script>
 </head>
 <body>
@@ -1667,8 +1610,7 @@
         </div>
     </section>
 
-    <!-- Footer Placeholder -->
-    <div id="footer-placeholder"></div>
+    <!-- Footer is now inline below -->
 
     <!-- Waitlist Modal -->
     <div id="waitlistModal" class="waitlist-modal">
