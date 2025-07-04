@@ -109,7 +109,7 @@
 
         .faq-answer.active {
             padding: 20px 25px;
-            max-height: 500px;
+            max-height: none;
         }
 
         .faq-answer p {
@@ -288,25 +288,11 @@
             }
         }
     </style>
-    <script src="shared-nav.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            setupSharedNavigation();
-            loadFooter();
             setupScrollProgress();
             setupFAQ();
         });
-
-        // Load footer component
-        async function loadFooter() {
-            try {
-                const response = await fetch('footer.html');
-                const footerHtml = await response.text();
-                document.getElementById('footer-placeholder').innerHTML = footerHtml;
-            } catch (error) {
-                console.error('Error loading footer:', error);
-            }
-        }
 
         function setupScrollProgress() {
             const progressBar = document.createElement('div');
@@ -350,22 +336,43 @@
 
         function setupFAQ() {
             const faqQuestions = document.querySelectorAll('.faq-question');
+            console.log('Setting up FAQ with', faqQuestions.length, 'questions');
             
-            faqQuestions.forEach(question => {
-                question.addEventListener('click', () => {
+            if (faqQuestions.length === 0) {
+                console.error('No FAQ questions found!');
+                return;
+            }
+            
+            faqQuestions.forEach((question, index) => {
+                question.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    console.log('FAQ question clicked:', index);
+                    
                     const answer = question.nextElementSibling;
+                    if (!answer) {
+                        console.error('No answer element found for question', index);
+                        return;
+                    }
+                    
                     const isActive = question.classList.contains('active');
+                    console.log('Question is currently active:', isActive);
                     
                     // Close all other FAQ items
                     faqQuestions.forEach(q => {
                         q.classList.remove('active');
-                        q.nextElementSibling.classList.remove('active');
+                        const nextEl = q.nextElementSibling;
+                        if (nextEl) {
+                            nextEl.classList.remove('active');
+                        }
                     });
                     
                     // Toggle current item if it wasn't active
                     if (!isActive) {
                         question.classList.add('active');
                         answer.classList.add('active');
+                        console.log('FAQ item expanded');
+                    } else {
+                        console.log('FAQ item collapsed');
                     }
                 });
             });
@@ -575,7 +582,7 @@
                 <div class="footer-main">
                     <div class="footer-brand">
                         <div class="footer-logo">detache</div>
-                        <p class="footer-text">Self Work for High Agency Folks.w</p>
+                        <p class="footer-text">Self Work for High Agency Folks.</p>
                     </div>
                     
                     <div class="footer-links-grid">
